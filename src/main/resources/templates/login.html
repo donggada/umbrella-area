@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>우세권 회원가입 화면</title>
+	<meta name="description" content="Some WebGL experiments with raindrop effects" />
+	<meta name="keywords" content="webgl, raindrops, effect, rain, web, video, background" />
+	<meta name="author" content="Lucas Bebber for Codrops" />
+	<link rel="shortcut icon" href="favicon.ico">
+	<link rel="stylesheet" type="text/css" href="css/normalize.css" />
+	<link rel="stylesheet" type="text/css" href="css/demo.css" />
+	<link rel="stylesheet" type="text/css" href="css/style3.css" />
+	<link rel="stylesheet" type="text/css" href="css/login.css" />
+	<link rel="stylesheet" type="text/css" href="css/reset.css" />
+	<link rel="stylesheet" type="text/css" href="css/style.css" />
+	<!--[if IE]>
+		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+</head>
+
+<body class="demo-3">
+	<video class="videobg" src="media/video.mp4" poster="media/video.jpg" autoplay loop muted>
+		<source src="media/video.webm" type="video/web">
+		<source src="media/video.mp4" type="video/mp4">
+	</video>
+	<canvas id="container" width="1" height="1" style="position:absolute"></canvas>
+	<div class="container">
+		<header>
+			<div th:replace="index.html :: fragment-header"></div>
+		</header>
+
+<!--		<img class="logo-img" src="img/logo.svg" alt="logo" />-->
+		<div id="wrapper">
+			<div class=wrapper_in>
+				<h3>LOGIN</h3>
+				<div class="login_box">
+					<input type="text" class="id_box" placeholder="아이디" name="member_id">
+					<input type="password" class="password_box" placeholder="비밀번호" name="member_pass">
+					<div class="id_remember">
+					</div>
+					<div class="login_btn">
+						<a href="#">
+							로그인
+						</a>
+					</div>
+					<div class="login_gnb">
+						<ul>
+							<li>
+								<a href="#">아이디 찾기</a>
+							</li>
+							<li><span>|</span></li>
+							<li>
+								<a href="#">비밀번호 찾기</a>
+							</li>
+							<li><span>|</span></li>
+							<li>
+								<a href='/join"/>'>회원가입</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+		<p class="nosupport">Sorry, but your browser does not support WebGL!</p>
+	</div>
+	<!-- /container -->
+	<script src="js/index3.min.js"></script>
+</body>
+
+</html>
