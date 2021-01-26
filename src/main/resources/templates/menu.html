@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="css/menu.css" />
+</head>
+<body>
+<header th:fragment="fragment-menu">
+<input type='checkbox' id='mmeennuu'>
+<label class='menu' for='mmeennuu'>
+
+    <div class='barry'>
+        <span class='bar'></span>
+        <span class='bar'></span>
+        <span class='bar'></span>
+        <span class='bar'></span>
+    </div>
+
+    <ul>
+        <li><a id='home' href='/'>Home</a></li>
+        <li><a id='about' href='map'>지도</a></li>
+        <li><a id='contact' href='/contact'>신고문의</a></li>
+        <li><a id='link' href='#'>Other</a></li>  x
+    </ul>
+
+</label>
+</header>
+</body>
+</html>

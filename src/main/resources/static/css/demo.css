@@ -100,12 +100,12 @@ a:focus {
 }
 
 .codrops-links::after {
-	position: absolute;
+
 	top: 50%;
 	left: 50%;
 	width: 1px;
 	height: 110%;
-	background: #252445;
+	background: #ffffff;
 	content: '';
 	-webkit-transform: translateY(-50%) rotate3d(0, 0, 1, 22.5deg);
 	transform: translateY(-50%) rotate3d(0, 0, 1, 22.5deg);

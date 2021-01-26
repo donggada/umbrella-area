@@ -1,7 +1,7 @@
 $(document).ready(function(){
 
      $(".join_btn").click(function(){	
-     
+//
 //     	if($('#member_id').val()==""){
 //     	alert('아이디를 입력해주세요');
 //     	$('#member_id').focus();
@@ -62,9 +62,9 @@ $(document).ready(function(){
 //     	$('#member_pass').focus();
 //     	return;
      	
-     	}else{
+//     	}else{
      	 $("form").submit() 
-     	 }
+ //    	 }
      	
     });
     

@@ -16,6 +16,9 @@
 	<link rel="stylesheet" type="text/css" href="css/login.css" />
 	<link rel="stylesheet" type="text/css" href="css/reset.css" />
 	<link rel="stylesheet" type="text/css" href="css/style.css" />
+	<link rel="stylesheet" type="text/css" href="css/menu.css" />
+	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+	<script src="js/login.js"></script>
 	<!--[if IE]>
 		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 		<![endif]-->
@@ -33,10 +36,12 @@
 		</header>
 
 <!--		<img class="logo-img" src="img/logo.svg" alt="logo" />-->
+		<form method="post" action="/login">
 		<div id="wrapper">
 			<div class=wrapper_in>
 				<h3>LOGIN</h3>
 				<div class="login_box">
+
 					<input type="text" class="id_box" placeholder="아이디" name="member_id">
 					<input type="password" class="password_box" placeholder="비밀번호" name="member_pass">
 					<div class="id_remember">
@@ -47,6 +52,7 @@
 						</a>
 					</div>
 					<div class="login_gnb">
+
 						<ul>
 							<li>
 								<a href="#">아이디 찾기</a>
@@ -64,6 +70,10 @@
 				</div>
 		<p class="nosupport">Sorry, but your browser does not support WebGL!</p>
 	</div>
+		</div>
+		</form>
+	</div>
+</body>
 	<!-- /container -->
 	<script src="js/index3.min.js"></script>
 </body>

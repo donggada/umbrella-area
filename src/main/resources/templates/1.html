@@ -15,8 +15,6 @@
 	<link rel="stylesheet" type="text/css" th:href="@{/css/demo.css}" />
 	<link rel="stylesheet" type="text/css" href="css/style1.css" />
 	<link rel="stylesheet" type="text/css" href="css/menu.css" />
-	<script src="https://code.jquery.com/jquery-3.5.1.min.js?ver=2"></script>
-	<script src="js/weather.js"></script>
 	<!--[if IE]>
 		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 		<![endif]-->
@@ -54,13 +52,48 @@
 		<div class="slideshow">
 
 			<canvas width="1" height="1" id="container" style="position:absolute"></canvas>
-			<div id="info">
 
+			<!-- Heavy Rain -->
+			<div class="slide" id="slide-1" data-weather="rain">
+				<div class="slide__element slide__element--date">서울 2021-1-24 수요일 </div>
+				<div class="slide__element slide__element--temp">12°<small>C</small></div>
 			</div>
-
-
+			<!-- Drizzle -->
+			<div class="slide" id="slide-2" data-weather="drizzle">
+				<div class="slide__element slide__element--date">Saturday, 25<sup>경기도</sup> of October 2043</div>
+				<div class="slide__element slide__element--temp">18°<small>C</small></div>
+			</div>
+			<!-- Sunny -->
+			<div class="slide" id="slide-3" data-weather="sunny">
+				<div class="slide__element slide__element--date">Monday, 26<sup>th</sup> of October 2043</div>
+				<div class="slide__element slide__element--temp">25°<small>C</small></div>
+			</div>
+			<!-- Heavy rain -->
+			<div class="slide" id="slide-5" data-weather="storm">
+				<div class="slide__element slide__element--date">Wednesday, 28<sup>th</sup> of October 2043</div>
+				<div class="slide__element slide__element--temp">20°<small>C</small></div>
+			</div>
+			<!-- Fallout (greenish overlay with slightly greenish/yellowish drops) -->
+			<div class="slide" id="slide-4" data-weather="fallout">
+				<div class="slide__element slide__element--date">Tuesday, 27<sup>th</sup> of October 2043</div>
+				<div class="slide__element slide__element--temp">34°<small>C</small></div>
+			</div>
+			<div class="slide" id="slide-6" data-weather="fallout">
+				<div class="slide__element slide__element--date">Tuesday, 27<sup>th</sup> of October 2043</div>
+				<div class="slide__element slide__element--temp">34°<small>C</small></div>
+			</div>
+			<div class="slide" id="slide-7" data-weather="drizzle">
+				<div class="slide__element slide__element--date">Saturday, 25<sup>경기도</sup> of October 2043</div>
+				<div class="slide__element slide__element--temp">18°<small>C</small></div>
+			</div>
 			<nav class="slideshow__nav">
-
+				<a class="nav-item" href="#slide-1"><i class="icon icon--rainy"></i><span>서울</span></a>
+				<a class="nav-item" href="#slide-2"><i class="icon icon--drizzle"></i><span>경기도</span></a>
+				<a class="nav-item" href="#slide-3"><i class="icon icon--sun"></i><span>충청도</span></a>
+				<a class="nav-item" href="#slide-5"><i class="icon icon--storm"></i><span>경상도</span></a>
+				<a class="nav-item" href="#slide-4"><i class="icon icon--radioactive"></i><span>전라도</span></a>
+				<a class="nav-item" href="#slide-6"><i class="icon icon--radioactive"></i><span>강원도</span></a>
+				<a class="nav-item" href="#slide-7"><i class="icon icon--radioactive"></i><span>제주도</span></a>
 			</nav>
 		</div>
 		<p class="nosupport">Sorry, but your browser does not support WebGL!</p>
