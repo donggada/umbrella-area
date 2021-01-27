@@ -1,7 +1,7 @@
 $(document).ready(function(){
  $.getJSON("/weather",function(rdate){
  $.each(rdate,function(index,item){
-        var num=Number(index)+1;
+        var num=Number(index)+2;
         var dw="";
         var wicon=""
         if(item.lgt!="0"){
