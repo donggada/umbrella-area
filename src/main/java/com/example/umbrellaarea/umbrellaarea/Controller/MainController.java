@@ -16,4 +16,8 @@ public class MainController {
         return "index";
     }
 
+    @RequestMapping("/map")
+    public String map(){
+        return "map";
+    }
 }
