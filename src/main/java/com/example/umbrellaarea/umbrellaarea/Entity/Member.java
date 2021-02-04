@@ -9,7 +9,7 @@ import javax.persistence.*;
 @Getter
 public class Member {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long member_num;
     @Column(unique = true)
     private String member_id;
