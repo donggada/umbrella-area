@@ -6,7 +6,6 @@ import com.example.umbrellaarea.umbrellaarea.Entity.Umbrella;
 import com.example.umbrellaarea.umbrellaarea.Entity.UmbrellaArea;
 import com.example.umbrellaarea.umbrellaarea.Repository.UmbrellaAreaRepository;
 import com.example.umbrellaarea.umbrellaarea.Repository.UmbrellaRepository;
-import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
