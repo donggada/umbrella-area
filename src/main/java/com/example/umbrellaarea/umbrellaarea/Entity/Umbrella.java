@@ -13,7 +13,7 @@ public class Umbrella {
     private Long id;
     private Long price;
     @ManyToOne
-    @JoinColumn
+    @JoinColumn(name = "umbrella_area_id")
     private UmbrellaArea umbrellaArea;
     private boolean state;
 

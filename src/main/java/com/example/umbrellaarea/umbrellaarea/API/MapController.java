@@ -7,6 +7,7 @@ import com.example.umbrellaarea.umbrellaarea.Repository.UmbrellaRepository;
 import com.example.umbrellaarea.umbrellaarea.Service.MapService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -26,9 +27,9 @@ public class MapController {
     public Long umbrella_count(){
         return mapService.umbrella_count();
     }
-    @GetMapping("/list")
-    public List<Umbrella> sss(){
-        return umbrellaRepository.findAll();
+    @GetMapping("/list/{id}")
+    public List<Umbrella> list(@PathVariable(name = "id") Long id){
+        return  mapService.umberlla_list(id);
     }
 
     @GetMapping("/area")

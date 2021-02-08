@@ -61,4 +61,8 @@ public class MapService {
         }
         return DTO;
     }
+
+    public List<Umbrella> umberlla_list(Long id) {
+       return umbrellaRepository.findByUmbrellaArea_Id(id);
+    }
 }

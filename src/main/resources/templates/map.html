@@ -17,9 +17,9 @@
 <body>
 
 <div id="map" style="width:100%;height:350px;">
-    <header>
-        <div th:replace="index.html :: fragment-header"></div>
-    </header>
+<!--    <header>-->
+<!--        <div th:replace="index.html :: fragment-header"></div>-->
+<!--    </header>-->
 </div>
 
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=5a5acd92c1997ca0692332af110038d2"></script>
@@ -96,7 +96,7 @@ for (var i = 0; i < positions.length; i ++) {
     });
 
     var content = '<div class="customoverlay">' +
-    '  <a href="https://map.kakao.com/link/map/11394059" target="_blank">' +
+    '  <a href="'+positions[i].title+'" onclick="window.open(this.href,'+'"_blank", "width=200, height=200"); return false;"'+' target="_blank">' +
     '    <span class="title">'+positions[i].title+'</span>' +
     '  </a>' +
     '</div>';
@@ -107,11 +107,10 @@ var customOverlay = new kakao.maps.CustomOverlay({
     map: map,
     position: positions[i].latlng,
     content: content,
-    yAnchor: 1
+    yAnchor: 0.2
 });
 
 }
-
     // 지도 중심좌표를 접속위치로 변경합니다
     map.setCenter(locPosition);
 }
