@@ -96,11 +96,15 @@ for (var i = 0; i < positions.length; i ++) {
     });
 
     var content = '<div class="customoverlay">' +
-    '  <a href="'+positions[i].title+'" onclick="window.open(this.href,'+'"_blank", "width=200, height=200"); return false;"'+' target="_blank">' +
+    '  <a href="'+positions[i].title+'" onclick="orderopen(this.href)"; target="_blank">' +
     '    <span class="title">'+positions[i].title+'</span>' +
     '  </a>' +
     '</div>';
-
+function orderopen(orderpage){
+alert(orderpage);
+window.open(orderpage,'_blank','width=200, height=200');
+return false;
+}
 
 // 커스텀 오버레이를 생성합니다
 var customOverlay = new kakao.maps.CustomOverlay({
