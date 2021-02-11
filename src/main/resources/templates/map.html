@@ -47,6 +47,7 @@ $.getJSON('/area',function(rdate){
    $.each(rdate,function(index,item){
     positions.push( {
         title: item.count,
+        id:item.id,
         latlng: new kakao.maps.LatLng(item.nx, item.ny),
         markerImage: new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption)
     });
@@ -82,6 +83,7 @@ if (navigator.geolocation) {
 function displayMarker(locPosition) {
 positions.push(    {
                     title: '현재위치',
+                    id:'#',
                     latlng: locPosition,
                     markerImage: ''
                     }
@@ -96,7 +98,7 @@ for (var i = 0; i < positions.length; i ++) {
     });
 
     var content = '<div class="customoverlay">' +
-    '  <a href="'+positions[i].title+'" onclick="orderopen(this.href)"; target="_blank">' +
+    '  <a href="order?id='+positions[i].id+'" onclick="orderopen(this.href)"; target="_blank">' +
     '    <span class="title">'+positions[i].title+'</span>' +
     '  </a>' +
     '</div>';

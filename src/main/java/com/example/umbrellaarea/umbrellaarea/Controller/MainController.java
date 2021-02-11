@@ -4,6 +4,7 @@ import com.example.umbrellaarea.umbrellaarea.DTO.MemberDTO;
 import com.example.umbrellaarea.umbrellaarea.Service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -19,5 +20,10 @@ public class MainController {
     @RequestMapping("/map")
     public String map(){
         return "map";
+    }
+
+    @RequestMapping("order")
+    public String order(){
+        return "order";
     }
 }
