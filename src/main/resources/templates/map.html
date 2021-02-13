@@ -83,7 +83,7 @@ if (navigator.geolocation) {
 function displayMarker(locPosition) {
 positions.push(    {
                     title: '현재위치',
-                    id:'#',
+                    id:'0',
                     latlng: locPosition,
                     markerImage: ''
                     }
@@ -98,7 +98,7 @@ for (var i = 0; i < positions.length; i ++) {
     });
 
     var content = '<div class="customoverlay">' +
-    '  <a href="order?id='+positions[i].id+'" onclick="orderopen(this.href)"; target="_blank">' +
+    '  <a href="order/'+positions[i].id+'" onclick="orderopen(this.href)"; target="_blank">' +
     '    <span class="title">'+positions[i].title+'</span>' +
     '  </a>' +
     '</div>';
