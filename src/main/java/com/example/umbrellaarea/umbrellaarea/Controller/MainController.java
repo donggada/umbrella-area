@@ -31,6 +31,7 @@ public class MainController {
     public String order(@PathVariable (name = "id") Long id, Model model){
         if(id!=0){
             model.addAttribute("areainfo",umbrellaAreaRepository.findById(id));
+            System.out.println(model.toString());
         }else{
             model.addAttribute("areainfo","현재위치 ");
         }
