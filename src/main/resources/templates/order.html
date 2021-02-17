@@ -6,17 +6,20 @@
 </head>
 <link rel="stylesheet" type="text/css" href="css/order.css" />
 <body>
+
 <div class="col-lg-4 col-md-6 text-center">
     <div class="single-pricing-table1">
+<form action="/order" method="post">
+    <input type="hidden" name="id" th:value="${areainfo.id}"/>
         <h3 id="img">img</h3>
-        <h2 id="num"></h2>
+
+            <h2 id="num"><p th:text="${areainfo.name}"></p></h2>
 
         <ul class="package-list">
-            <li id="car_maker">1</li>
-            <li id="car_name">2</li>
-            <li id="car_type"></li>
-
+            <li id="car_maker"><p th:text="${areainfo.count}"/></li>
         </ul>
+<input type="submit">
+</form>
     </div>
 </div>
 </body>

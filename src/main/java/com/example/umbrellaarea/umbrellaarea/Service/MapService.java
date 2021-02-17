@@ -22,9 +22,9 @@ public class MapService {
     UmbrellaAreaRepository umbrellaAreaRepository;
     public UmbrellaArea umbrella_first() {
         UmbrellaAreaDTO umbrellaAreaDTO=new UmbrellaAreaDTO();
-        umbrellaAreaDTO.setName("동탄 5동");
-        umbrellaAreaDTO.setNx(37.20);
-        umbrellaAreaDTO.setNy(127.1);
+        umbrellaAreaDTO.setName("옥수동");
+        umbrellaAreaDTO.setNx(34.87561546350398);
+        umbrellaAreaDTO.setNy(128.72973168043265);
         UmbrellaArea umbrellaArea=new UmbrellaArea(umbrellaAreaDTO);
 
         return umbrellaAreaRepository.save(umbrellaArea);
@@ -64,5 +64,11 @@ public class MapService {
 
     public List<Umbrella> umberlla_list(Long id) {
        return umbrellaRepository.findByUmbrellaArea_Id(id);
+    }
+
+    public UmbrellaAreaDTO orderinfo(Long id){
+        UmbrellaAreaDTO umbrellaAreaDTO=new UmbrellaAreaDTO(umbrellaAreaRepository.findById(id).get());
+        umbrellaAreaDTO.setCount(umbrellaRepository.countByUmbrellaArea(umbrellaAreaRepository.getOne(id)));
+        return umbrellaAreaDTO;
     }
 }
