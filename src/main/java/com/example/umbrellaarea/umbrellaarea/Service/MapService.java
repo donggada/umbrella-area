@@ -20,17 +20,16 @@ public class MapService {
     UmbrellaRepository umbrellaRepository;
     @Autowired
     UmbrellaAreaRepository umbrellaAreaRepository;
+    // 우산대여존 초기 설정 (수정해야함)
     public UmbrellaArea umbrella_first() {
         UmbrellaAreaDTO umbrellaAreaDTO=new UmbrellaAreaDTO();
         umbrellaAreaDTO.setName("옥수동");
         umbrellaAreaDTO.setNx(34.87561546350398);
         umbrellaAreaDTO.setNy(128.72973168043265);
         UmbrellaArea umbrellaArea=new UmbrellaArea(umbrellaAreaDTO);
-
         return umbrellaAreaRepository.save(umbrellaArea);
-
     }
-
+    //테스트
     public Long umbrella_count() {
 
         return umbrellaRepository.countByUmbrellaArea(umbrellaAreaRepository.getOne(49L));
@@ -40,7 +39,6 @@ public class MapService {
         ArrayList<Umbrella> arrayList=new ArrayList<Umbrella>();
         for (int i = 0; i <10 ; i++) {
             UmbrellaDTO umbrellaDTO=new UmbrellaDTO();
-            umbrellaDTO.setPrice(1000L);
             umbrellaDTO.setUmbrellaArea(umbrellaArea);
             Umbrella umbrella=new Umbrella(umbrellaDTO);
             arrayList.add(umbrella);
@@ -50,7 +48,7 @@ public class MapService {
 
         return umbrellaRepository.findAll();
     }
-
+    //지도에 뿌려줄 대여존 정보
     public List<UmbrellaAreaDTO> area() {
         List<UmbrellaAreaDTO> DTO=new ArrayList<UmbrellaAreaDTO>();
         List<UmbrellaArea> list=umbrellaAreaRepository.findAll();
@@ -61,11 +59,12 @@ public class MapService {
         }
         return DTO;
     }
-
+    //우산대여존 우산 갯수 조회
     public List<Umbrella> umberlla_list(Long id) {
        return umbrellaRepository.findByUmbrellaArea_Id(id);
     }
 
+    //우산대여존 상세페이지 조회
     public UmbrellaAreaDTO orderinfo(Long id){
         UmbrellaAreaDTO umbrellaAreaDTO=new UmbrellaAreaDTO(umbrellaAreaRepository.findById(id).get());
         umbrellaAreaDTO.setCount(umbrellaRepository.countByUmbrellaArea(umbrellaAreaRepository.getOne(id)));

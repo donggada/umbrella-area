@@ -9,6 +9,7 @@ public class UmbrellaAreaApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(UmbrellaAreaApplication.class, args);
+
 	}
 
 }
