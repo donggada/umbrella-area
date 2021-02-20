@@ -14,18 +14,18 @@ import java.util.List;
 public interface UmbrellaRepository extends JpaRepository<Umbrella,Long> {
 
     Long countByUmbrellaArea(UmbrellaArea umbrellaArea);
-
-    List<Umbrella> findByUmbrellaArea_Id(Long id);
+    Long countByUmbrellaAreaAndState(UmbrellaArea umbrellaArea,Boolean state);
+    List<Umbrella> findByUmbrellaArea_IdAndStateOrderByDate(Long id,Boolean state);
     //update test
     @Transactional
     @Modifying
     @Query(value = "update umbrella set state=:date where id=:id",nativeQuery = true)
     Integer timetest(Long id,boolean date);
 
-    @Query(value = "Select * from umbrella where state=:state order by date", nativeQuery = true)
-    List<Umbrella> findByStateAndOrderByDate(boolean state);
     @Transactional
     @Modifying
     @Query(value = "update umbrella set state=:state where id=:id",nativeQuery = true)
-    int order(Long id,boolean state);
+    int order(@Param("id") Long id,@Param("state") boolean state);
+
+    List<Umbrella> findByUmbrellaArea_Id(Long id);
 }

@@ -11,7 +11,9 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 
 @Service
 @Transactional
@@ -21,11 +23,10 @@ public class MapService {
     @Autowired
     UmbrellaAreaRepository umbrellaAreaRepository;
     // 우산대여존 초기 설정 (수정해야함)
-    public UmbrellaArea umbrella_first() {
-        UmbrellaAreaDTO umbrellaAreaDTO=new UmbrellaAreaDTO();
-        umbrellaAreaDTO.setName("옥수동");
-        umbrellaAreaDTO.setNx(34.87561546350398);
-        umbrellaAreaDTO.setNy(128.72973168043265);
+    public UmbrellaArea umbrella_first(UmbrellaAreaDTO umbrellaAreaDTO) {
+        System.out.println(umbrellaAreaDTO.getNx());
+        System.out.println(umbrellaAreaDTO.getName());
+        System.out.println(umbrellaAreaDTO.getNy());
         UmbrellaArea umbrellaArea=new UmbrellaArea(umbrellaAreaDTO);
         return umbrellaAreaRepository.save(umbrellaArea);
     }
@@ -35,9 +36,9 @@ public class MapService {
         return umbrellaRepository.countByUmbrellaArea(umbrellaAreaRepository.getOne(49L));
     }
 
-    public List<Umbrella> umbrella_add(UmbrellaArea umbrellaArea) {
+    public List<Umbrella> umbrella_add(UmbrellaArea umbrellaArea,Long count) {
         ArrayList<Umbrella> arrayList=new ArrayList<Umbrella>();
-        for (int i = 0; i <10 ; i++) {
+        for (int i = 0; i <count ; i++) {
             UmbrellaDTO umbrellaDTO=new UmbrellaDTO();
             umbrellaDTO.setUmbrellaArea(umbrellaArea);
             Umbrella umbrella=new Umbrella(umbrellaDTO);
@@ -54,7 +55,7 @@ public class MapService {
         List<UmbrellaArea> list=umbrellaAreaRepository.findAll();
         for (int i = 0; i <list.size() ; i++) {
             UmbrellaAreaDTO umbrellaAreaDTO=new UmbrellaAreaDTO(list.get(i));
-            umbrellaAreaDTO.setCount(umbrellaRepository.countByUmbrellaArea(list.get(i)));
+            umbrellaAreaDTO.setCount(umbrellaRepository.countByUmbrellaAreaAndState(list.get(i),true));
             DTO.add(umbrellaAreaDTO);
         }
         return DTO;
@@ -69,5 +70,13 @@ public class MapService {
         UmbrellaAreaDTO umbrellaAreaDTO=new UmbrellaAreaDTO(umbrellaAreaRepository.findById(id).get());
         umbrellaAreaDTO.setCount(umbrellaRepository.countByUmbrellaArea(umbrellaAreaRepository.getOne(id)));
         return umbrellaAreaDTO;
+    }
+
+    public UmbrellaDTO order(Long id) {
+        Queue<Umbrella> queue=new LinkedList<Umbrella>();
+        queue.addAll(umbrellaRepository.findByUmbrellaArea_IdAndStateOrderByDate(id,true));
+        umbrellaRepository.order(queue.peek().getId(),!queue.peek().isState());
+        UmbrellaDTO umbrella=new UmbrellaDTO(queue.poll(),false);
+        return umbrella;
     }
 }

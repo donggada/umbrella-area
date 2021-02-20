@@ -1,6 +1,8 @@
 package com.example.umbrellaarea.umbrellaarea.Controller;
 
 import com.example.umbrellaarea.umbrellaarea.DTO.MemberDTO;
+import com.example.umbrellaarea.umbrellaarea.DTO.UmbrellaAreaDTO;
+import com.example.umbrellaarea.umbrellaarea.DTO.UmbrellaDTO;
 import com.example.umbrellaarea.umbrellaarea.Repository.UmbrellaAreaRepository;
 import com.example.umbrellaarea.umbrellaarea.Service.MapService;
 import com.example.umbrellaarea.umbrellaarea.Service.MemberService;
@@ -11,6 +13,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import javax.servlet.http.HttpServletRequest;
 
 @Controller
 public class MainController {
@@ -28,6 +32,17 @@ public class MainController {
         return "map";
     }
 
+    @RequestMapping("/adminmap")
+    public String adminmap(){
+        return "adminmap";
+    }
+    @RequestMapping("/areainit")
+    public String areainit(UmbrellaAreaDTO umbrellaAreaDTO,Model model){
+        model.addAttribute("lat",umbrellaAreaDTO);
+        return "umbrellaAreainit";
+    }
+
+
     @RequestMapping("/order/{id}")
     public String order(@PathVariable (name = "id") Long id, Model model){
 
@@ -41,9 +56,11 @@ public class MainController {
     }
 
     @PostMapping("/order")
-    public String postorder(Long id){
-        System.out.println(id);
-
-        return "map";
+    public String postorder(Long id,Model model){
+        UmbrellaDTO umbrellaDTO =mapService.order(id);
+        if(umbrellaDTO!=null) {
+            model.addAttribute("umbrella", umbrellaDTO);
+        }
+        return "myorder";
     }
 }

@@ -5,32 +5,32 @@ import lombok.Getter;
 
 import javax.persistence.*;
 
-@Entity(name = "member")
+@Entity
 @Getter
 public class Member {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long member_num;
+    private long num;
     @Column(unique = true)
-    private String member_id;
-    private String member_name;
-    private String member_pass;
-    private String member_bir_Y;
-    private String member_bir_M;
-    private String member_bir_D;
-    private String member_gender;
+    private String id;
+    private String name;
+    private String pass;
+    private String bir_Y;
+    private String bir_M;
+    private String bir_D;
+    private String gender;
 
     public Member() {
     }
 
     public Member(MemberDTO memberDTO) {
-        this.member_num = memberDTO.getMember_num();
-        this.member_id = memberDTO.getMember_id();
-        this.member_name = memberDTO.getMember_name();
-        this.member_pass = memberDTO.getMember_pass();
-        this.member_bir_Y = memberDTO.getMember_bir_Y();
-        this.member_bir_M = memberDTO.getMember_bir_M();
-        this.member_bir_D = memberDTO.getMember_bir_D();
-        this.member_gender = memberDTO.getMember_gender();
+        this.num = memberDTO.getMember_num();
+        this.id = memberDTO.getMember_id();
+        this.name = memberDTO.getMember_name();
+        this.pass = memberDTO.getMember_pass();
+        this.bir_Y = memberDTO.getMember_bir_Y();
+        this.bir_M = memberDTO.getMember_bir_M();
+        this.bir_D = memberDTO.getMember_bir_D();
+        this.gender = memberDTO.getMember_gender();
     }
 }

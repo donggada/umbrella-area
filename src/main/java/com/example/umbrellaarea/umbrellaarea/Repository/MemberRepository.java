@@ -8,6 +8,5 @@ import org.springframework.stereotype.Repository;
 
 
 public interface MemberRepository extends JpaRepository<Member,Long> {
-    @Query(value = "select m from member m where m.member_id = :#{#member.member_id} and m.member_pass = :#{#member.member_pass}")
-    Member findById(Member member);
+    Member findByIdAndPass(String id,String pass);
 }

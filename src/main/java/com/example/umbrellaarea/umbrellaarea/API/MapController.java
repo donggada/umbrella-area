@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.sql.Timestamp;
@@ -27,9 +28,9 @@ public class MapController {
     @Autowired
     UmbrellaAreaRepository umbrellaAreaRepository;
     // 우산대여존 초기 설정 (수정해야함)
-    @GetMapping("/umbrellafirst")
-    public List<Umbrella> sitting(){
-        return mapService.umbrella_add(mapService.umbrella_first());
+    @PostMapping("/umbrellafirst")
+    public List<Umbrella> sitting(UmbrellaAreaDTO umbrellaAreaDTO){
+        return mapService.umbrella_add(mapService.umbrella_first(umbrellaAreaDTO),umbrellaAreaDTO.getCount());
 
     }
     //테스트
@@ -56,14 +57,19 @@ public class MapController {
     }
     //우산 차례대로 주무되도록!!
     @GetMapping("ordertest")
-    public UmbrellaDTO ordertest(){
+    public UmbrellaDTO ordertest(Long id){
         Queue<Umbrella> queue=new LinkedList<Umbrella>();
-        queue.addAll(umbrellaRepository.findByStateAndOrderByDate(true));
+        queue.addAll(umbrellaRepository.findByUmbrellaArea_IdAndStateOrderByDate(id,true));
         umbrellaRepository.order(queue.peek().getId(),!queue.peek().isState());
         UmbrellaDTO umbrella=new UmbrellaDTO(queue.poll(),false);
 
         return umbrella;
 
+    }
+    @GetMapping("/bytest")
+    public List<Umbrella> byteest(){
+
+        return umbrellaRepository.findByUmbrellaArea_IdAndStateOrderByDate(1L,true);
     }
 
 

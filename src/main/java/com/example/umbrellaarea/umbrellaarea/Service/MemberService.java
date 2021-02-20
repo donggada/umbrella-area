@@ -22,7 +22,7 @@ public class MemberService {
 
     public Member find(MemberDTO memberDTO) {
         Member member=new Member(memberDTO);
-        return memberRepository.findById(member);
+        return memberRepository.findByIdAndPass(memberDTO.getMember_id(),memberDTO.getMember_pass());
     }
 
 
