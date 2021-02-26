@@ -19,8 +19,26 @@
             <li id="car_maker"><p th:text="${areainfo.count}"/></li>
         </ul>
 <input type="submit">
+    <a onclick="popp('test')">test</a>
 </form>
     </div>
 </div>
+<script>
+    function popp(w){
+    var test = "'w'";
+    var _width = '100';
+    var _height = '100';
+
+    // 팝업을 가운데 위치시키기 위해 아래와 같이 값 구하기
+    var _left = Math.ceil(( window.screen.width - _width )/2);
+    var _top = Math.ceil(( window.screen.width - _height )/2);
+    alert(test);
+ alert(_left);
+ alert(_top);
+ alert(_width);
+ alert(_height);
+window.open('test.html', 'popup-test', 'width='+ _width +', height='+ _height +', left=' + _left + ', top='+ _top );
+    }
+</script>
 </body>
 </html>

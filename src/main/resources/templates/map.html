@@ -99,15 +99,10 @@ for (var i = 0; i < positions.length; i ++) {
     });
 
     var content = '<div class="customoverlay">' +
-    '  <a href="order/'+positions[i].id+'" onclick="orderopen(this.href)"; target="_blank">' +
+    '  <a onclick="orderopen('+"'order/"+positions[i].id+"'"+')" target="_blank">' +
     '    <span class="title">'+positions[i].title+'</span>' +
     '  </a>' +
     '</div>';
-function orderopen(orderpage){
-alert(orderpage);
-window.open(orderpage,'_blank','width=200, height=200');
-return false;
-}
 
 // 커스텀 오버레이를 생성합니다
 var customOverlay = new kakao.maps.CustomOverlay({
@@ -122,6 +117,17 @@ var customOverlay = new kakao.maps.CustomOverlay({
     map.setCenter(locPosition);
 }
 
+function orderopen(orderpage){
+ var _width = '650';
+    var _height = '380';
+
+    // 팝업을 가운데 위치시키기 위해 아래와 같이 값 구하기
+    var _left = Math.ceil(( window.screen.width - _width )/2);
+    var _top = Math.ceil(( window.screen.width - _height )/5);
+
+window.open(orderpage, 'popup-test', 'width='+ _width +', height='+ _height +', left=' + _left + ', top='+ _top );
+
+}
 
 </script>
 </body>
