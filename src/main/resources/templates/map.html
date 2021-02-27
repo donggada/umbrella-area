@@ -45,7 +45,7 @@ var positions=[];
     var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption),
     markerPosition = new kakao.maps.LatLng(37.54699, 127.09598); // 마커가 표시될 위치입니다
 $.getJSON('/area',function(rdate){
-   $.each(rdate,function(index,item){
+  $.each(rdate,function(index,item){
     positions.push( {
         title: item.count,
         id:item.id,
@@ -125,7 +125,7 @@ function orderopen(orderpage){
     var _left = Math.ceil(( window.screen.width - _width )/2);
     var _top = Math.ceil(( window.screen.width - _height )/5);
 
-window.open(orderpage, 'popup-test', 'width='+ _width +', height='+ _height +', left=' + _left + ', top='+ _top );
+window.open(orderpage, 'popup-test','menubar=no ,width='+ _width +', height='+ _height +', left=' + _left + ', top='+ _top );
 
 }
 

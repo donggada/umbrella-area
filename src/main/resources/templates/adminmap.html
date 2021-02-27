@@ -15,7 +15,7 @@
 <link rel="stylesheet" type="text/css" href="css/map.css" />
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <body>
-관리자 맵 페이지
+<input type="text" id="local"><input type="button" onclick="search()" value="검색하기 ">
 <div id="map" style="width:100%;height:350px;">
 <!--    <header>-->
 <!--        <div th:replace="index.html :: fragment-header"></div>-->
@@ -23,7 +23,7 @@
 
 </div>
 
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=5a5acd92c1997ca0692332af110038d2"></script>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=5a5acd92c1997ca0692332af110038d2&libraries=services"></script>
 <script>
 
 
@@ -47,92 +47,85 @@ var positions=[];
     var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption),
     markerPosition = new kakao.maps.LatLng(37.54699, 127.09598); // 마커가 표시될 위치입니다
 $.getJSON('/area',function(rdate){
-   $.each(rdate,function(index,item){
-    positions.push( {
-        title: item.count,
-        id:item.id,
-        latlng: new kakao.maps.LatLng(item.nx, item.ny),
-        markerImage: new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption)
-    });
-
-   })
+positions=rdate;
 })
-// HTML5의 geolocation으로 사용할 수 있는지 확인합니다
-if (navigator.geolocation) {
 
-    // GeoLocation을 이용해서 접속 위치를 얻어옵니다
-    navigator.geolocation.getCurrentPosition(function(position) {
+//검색위치로 지도 이동
+function placesSearchCB (data, status, pagination) {
+    if (status === kakao.maps.services.Status.OK) {
 
-        var lat = position.coords.latitude, // 위도
-            lon = position.coords.longitude; // 경도
+        // 검색된 장소 위치를 기준으로 지도 범위를 재설정하기위해
+        // LatLngBounds 객체에 좌표를 추가합니다
+        var bounds = new kakao.maps.LatLngBounds();
+        displayMarker();
+        for (var i=0; i<data.length; i++) {
+            bounds.extend(new kakao.maps.LatLng(data[i].y, data[i].x));
+        }
 
-        var locPosition = new kakao.maps.LatLng(lat, lon) // 마커가 표시될 위치를 geolocation으로 얻어온 좌표로 생성합니다
-             // 인포윈도우에 표시될 내용입니다
-
-        // 마커와 인포윈도우를 표시합니다
-        displayMarker(locPosition);
-
-      });
-
-} else { // HTML5의 GeoLocation을 사용할 수 없을때 마커 표시 위치와 인포윈도우 내용을 설정합니다
-
-    var locPosition = new kakao.maps.LatLng(33.450701, 126.570667)
-
-
-    displayMarker(locPosition);
+        // 검색된 장소 위치를 기준으로 지도 범위를 재설정합니다
+        map.setBounds(bounds);
+    }
 }
 
-// 지도에 마커와 인포윈도우를 표시하는 함수입니다
-function displayMarker(locPosition) {
-positions.push(    {
-                    title: '현재위치',
-                    id:'0',
-                    latlng: locPosition,
-                    markerImage: ''
-                    }
-                    );
 
-for (var i = 0; i < positions.length; i ++) {
-    // 마커를 생성합니다
-    var marker = new kakao.maps.Marker({
-        map: map,
-        position: positions[i].latlng,
-         image:  positions[i].markerImage
-    });
-
-    var content = '<div class="customoverlay">' +
-    '  <a href="order/'+positions[i].id+'" onclick="orderopen(this.href)"; target="_blank">' +
-    '    <span class="title">'+positions[i].title+'</span>' +
-    '  </a>' +
-    '</div>';
-function orderopen(orderpage){
-alert(orderpage);
-window.open(orderpage,'_blank','width=200, height=200');
-return false;
-}
-
-// 커스텀 오버레이를 생성합니다
-var customOverlay = new kakao.maps.CustomOverlay({
-    map: map,
-    position: positions[i].latlng,
-    content: content,
-    yAnchor: 0.2
-});
-
-}
-    // 지도 중심좌표를 접속위치로 변경합니다
-    map.setCenter(locPosition);
-}
+// 클릭 이벤트
 kakao.maps.event.addListener(map, 'click', function(mouseEvent) {
 
     // 클릭한 위도, 경도 정보를 가져옵니다
     var latlng = mouseEvent.latLng;
     window.open('areainit?nx='+latlng.getLat()+'&&ny='+latlng.getLng());
 
-    alert("nx = "+latlng.getLat()+"ny = "+latlng.getLng());
 });
 
+// 주문 페이지
+function orderopen(orderpage){
+ var _width = '650';
+    var _height = '380';
 
+    // 팝업을 가운데 위치시키기 위해 아래와 같이 값 구하기
+    var _left = Math.ceil(( window.screen.width - _width )/2);
+    var _top = Math.ceil(( window.screen.width - _height )/5);
+
+window.open(orderpage, 'popup-test','menubar=no ,width='+ _width +', height='+ _height +', left=' + _left + ', top='+ _top );
+
+}
+
+function displayMarker() {
+    for (var i = 0; i < positions.length; i ++) {
+       // 마커를 생성합니다
+    var marker = new kakao.maps.Marker({
+        map: map,
+        position: new kakao.maps.LatLng(positions[i].nx, positions[i].ny),
+         image:  new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption)
+    });
+
+    var content = '<div class="customoverlay">' +
+    '  <a onclick="orderopen('+"'order/"+positions[i].id+"'"+')" target="_blank">' +
+    '    <span class="title">'+positions[i].count+'</span>' +
+    '  </a>' +
+    '</div>';
+
+
+// 커스텀 오버레이를 생성합니다
+var customOverlay = new kakao.maps.CustomOverlay({
+    map: map,
+    position: new kakao.maps.LatLng(positions[i].nx, positions[i].ny),
+    content: content,
+    yAnchor: 0.2
+});
+
+} //for end
+
+}
+
+function search(){
+var local=document.getElementById('local').value;
+var ps = new kakao.maps.services.Places();
+
+// 키워드로 장소를 검색합니다
+ps.keywordSearch(local, placesSearchCB);
+
+}
 </script>
 </body>
 </html>
