@@ -10,8 +10,7 @@
 <div class="col-lg-4 col-md-6 text-center">
     <div class="single-pricing-table1">
     <input type="hidden" name="id" th:value="${umbrella.id}"/>
-        <h3 id="img">img</h3>
-
+        <img th:src="${umbrella.QR }" />
             <h2 id="num"><p th:text="${umbrella.umbrellaArea.name}"></p></h2>
 
         <ul class="package-list">
