@@ -29,7 +29,7 @@ public class MainController {
         return "index";
     }
 
-
+    //지도 화면
     @RequestMapping("/map")
     public String map(){
         return "map";
@@ -68,9 +68,16 @@ public class MainController {
     }
 
     @GetMapping("/myorder/{id}")
-    @ResponseBody
-    public List<Umbrella> myorder(@PathVariable(name = "id") Long id){
-        return mapService.myorder(id);
+    public String  myorder(@PathVariable(name = "id") Long id,Model model){
+
+        MyOrderDTO myOrderDTO =mapService.order(id);
+        System.out.println(id);
+        myOrderDTO.setQR("/QRCode/memberid_81");
+        if(myOrderDTO!=null) {
+            model.addAttribute("umbrella", myOrderDTO);
+        }
+        return "ttttttt";
+
     }
 
 }

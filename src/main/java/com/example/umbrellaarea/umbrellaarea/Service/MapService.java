@@ -82,7 +82,7 @@ public class MapService {
         QRCode qrCode=new QRCode(id+"",qrname);
         umbrellaRepository.order(umbrellaid,!queue.peek().isState());
         MyOrderDTO myOrderDTO=new MyOrderDTO(queue.poll(),false);
-        myOrderDTO.setQR("QRCode/"+qrname);
+        myOrderDTO.setQR("/QRCode/"+qrname);
         return myOrderDTO;
     }
 

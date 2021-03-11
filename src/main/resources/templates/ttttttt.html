@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<link rel="stylesheet" type="text/css" href="css/order.css" />
+<body>
+
+<div class="col-lg-4 col-md-6 text-center">
+    <div class="single-pricing-table1">
+    <input type="hidden" name="id" th:value="${umbrella.id}"/>
+        <img th:src="${umbrella.QR}" />
+            <h2 id="num"><p th:text="${umbrella.umbrellaArea.name}"></p></h2>
+
+        <ul class="package-list">
+            <li ><p th:text="${umbrella.state}"/></li>
+            <li ><p th:text="${umbrella.date}"/></li>
+            <li><p th:text="${umbrella.umbrellaArea.id}"/></li>
+
+        </ul>
+<input type="button" onclick="window.close();" value="닫기">
+    </div>
+</div>
+</body>
+</html>

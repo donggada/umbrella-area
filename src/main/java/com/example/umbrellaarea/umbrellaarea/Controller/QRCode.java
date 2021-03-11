@@ -29,7 +29,7 @@ public class QRCode {
     public void createQRCodeImage(String text,String qrname, int width, int height, int qrDarkColor, int qrLightColor)throws WriterException, IOException {
         QRCodeWriter qrCodeWriter = new QRCodeWriter();
         //  AWS  IP 주소 수정요망   이미 Ip
-        String hostQR="http://172.30.1.38:8080/myorder/"+text;
+        String hostQR="http://172.30.1.41:8080/myorder/"+text;
         BitMatrix bitMatrix = qrCodeWriter.encode(hostQR, BarcodeFormat.QR_CODE, width, height); //텍스트, 바코드 포맷,가로,세로
         MatrixToImageConfig config = new MatrixToImageConfig(qrDarkColor , qrLightColor); //진한색, 연한색
         BufferedImage qrImage = MatrixToImageWriter.toBufferedImage(bitMatrix , config);
