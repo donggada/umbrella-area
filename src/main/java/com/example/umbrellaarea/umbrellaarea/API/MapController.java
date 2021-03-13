@@ -27,17 +27,12 @@ public class MapController {
     UmbrellaRepository umbrellaRepository;
     @Autowired
     UmbrellaAreaRepository umbrellaAreaRepository;
-    // 우산대여존 초기 설정 (수정해야함)
-    @PostMapping("/umbrellafirst")
-    public List<Umbrella> sitting(UmbrellaAreaDTO umbrellaAreaDTO){
-        return mapService.umbrella_add(mapService.umbrella_first(umbrellaAreaDTO),umbrellaAreaDTO.getCount());
 
-    }
-    //테스트
-    @GetMapping("/umbrellacount")
-    public Long umbrella_count(){
-        return mapService.umbrella_count();
-    }
+//    //테스트
+//    @GetMapping("/umbrellacount")
+//    public Long umbrella_count(){
+//        return mapService.umbrella_count();
+//    }
 
     //대여존 우산 갯수 조회
     @GetMapping("/list/{id}")
@@ -49,12 +44,7 @@ public class MapController {
     public List<UmbrellaAreaDTO> area(){
         return mapService.area();
     }
-    //update test
-    @GetMapping("/timetest/{id}")
-    public Integer timetest(@PathVariable(name = "id") Long id){
-        Timestamp date=new Timestamp(System.currentTimeMillis());
-        return umbrellaRepository.timetest(id,false);
-    }
+
     //우산 차례대로 주무되도록!!
     @GetMapping("ordertest")
     public UmbrellaDTO ordertest(Long id){
@@ -66,12 +56,6 @@ public class MapController {
         return umbrella;
 
     }
-    @GetMapping("/bytest")
-    public List<Umbrella> byteest(){
-
-        return umbrellaRepository.findByUmbrellaArea_IdAndStateOrderByDate(1L,true);
-    }
-
 
 
 }

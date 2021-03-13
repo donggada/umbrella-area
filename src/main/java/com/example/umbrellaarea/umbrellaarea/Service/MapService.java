@@ -24,33 +24,7 @@ public class MapService {
     UmbrellaRepository umbrellaRepository;
     @Autowired
     UmbrellaAreaRepository umbrellaAreaRepository;
-    // 우산대여존 초기 설정 (수정해야함)
-    public UmbrellaArea umbrella_first(UmbrellaAreaDTO umbrellaAreaDTO) {
-        System.out.println(umbrellaAreaDTO.getNx());
-        System.out.println(umbrellaAreaDTO.getName());
-        System.out.println(umbrellaAreaDTO.getNy());
-        UmbrellaArea umbrellaArea=new UmbrellaArea(umbrellaAreaDTO);
-        return umbrellaAreaRepository.save(umbrellaArea);
-    }
-    //테스트
-    public Long umbrella_count() {
 
-        return umbrellaRepository.countByUmbrellaArea(umbrellaAreaRepository.getOne(49L));
-    }
-
-    public List<Umbrella> umbrella_add(UmbrellaArea umbrellaArea,Long count) {
-        ArrayList<Umbrella> arrayList=new ArrayList<Umbrella>();
-        for (int i = 0; i <count ; i++) {
-            UmbrellaDTO umbrellaDTO=new UmbrellaDTO();
-            umbrellaDTO.setUmbrellaArea(umbrellaArea);
-            Umbrella umbrella=new Umbrella(umbrellaDTO);
-            arrayList.add(umbrella);
-        }
-        umbrellaRepository.saveAll(arrayList);
-
-
-        return umbrellaRepository.findAll();
-    }
     //지도에 뿌려줄 대여존 정보
     public List<UmbrellaAreaDTO> area() {
         List<UmbrellaAreaDTO> DTO=new ArrayList<UmbrellaAreaDTO>();

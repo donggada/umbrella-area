@@ -16,11 +16,7 @@ public interface UmbrellaRepository extends JpaRepository<Umbrella,Long> {
     Long countByUmbrellaArea(UmbrellaArea umbrellaArea);
     Long countByUmbrellaAreaAndState(UmbrellaArea umbrellaArea,Boolean state);
     List<Umbrella> findByUmbrellaArea_IdAndStateOrderByDate(Long id,Boolean state);
-    //update test
-    @Transactional
-    @Modifying
-    @Query(value = "update umbrella set state=:date where id=:id",nativeQuery = true)
-    Integer timetest(Long id,boolean date);
+
 
     @Transactional
     @Modifying

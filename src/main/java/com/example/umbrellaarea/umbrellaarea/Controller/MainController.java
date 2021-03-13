@@ -35,49 +35,12 @@ public class MainController {
         return "map";
     }
 
+    //관리자 페이지
     @RequestMapping("/adminmap")
     public String adminmap(){
         return "adminmap";
     }
-    @RequestMapping("/areainit")
-    public String areainit(UmbrellaAreaDTO umbrellaAreaDTO,Model model){
-        model.addAttribute("lat",umbrellaAreaDTO);
-        return "umbrellaAreainit";
-    }
 
 
-    @RequestMapping("/order/{id}")
-    public String order(@PathVariable (name = "id") Long id, Model model){
-
-        if(id!=0){
-            model.addAttribute("areainfo",mapService.orderinfo(id));
-        }else{
-            model.addAttribute("areainfo","현재위치 ");
-        }
-        return "order";
-    }
-
-    @PostMapping("/order")
-    public String postorder(Long id,Model model){
-
-        MyOrderDTO myOrderDTO =mapService.order(id);
-        if(myOrderDTO!=null) {
-            model.addAttribute("umbrella", myOrderDTO);
-        }
-        return "myorder";
-    }
-
-    @GetMapping("/myorder/{id}")
-    public String  myorder(@PathVariable(name = "id") Long id,Model model){
-
-        MyOrderDTO myOrderDTO =mapService.order(id);
-        System.out.println(id);
-        myOrderDTO.setQR("/QRCode/memberid_81");
-        if(myOrderDTO!=null) {
-            model.addAttribute("umbrella", myOrderDTO);
-        }
-        return "ttttttt";
-
-    }
 
 }
