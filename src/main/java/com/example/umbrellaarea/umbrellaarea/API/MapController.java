@@ -2,17 +2,17 @@ package com.example.umbrellaarea.umbrellaarea.API;
 
 import com.example.umbrellaarea.umbrellaarea.DTO.UmbrellaAreaDTO;
 import com.example.umbrellaarea.umbrellaarea.DTO.UmbrellaDTO;
+import com.example.umbrellaarea.umbrellaarea.Entity.Orders;
 import com.example.umbrellaarea.umbrellaarea.Entity.Umbrella;
 import com.example.umbrellaarea.umbrellaarea.Entity.UmbrellaArea;
+import com.example.umbrellaarea.umbrellaarea.Repository.OrderRepository;
 import com.example.umbrellaarea.umbrellaarea.Repository.UmbrellaAreaRepository;
 import com.example.umbrellaarea.umbrellaarea.Repository.UmbrellaRepository;
 import com.example.umbrellaarea.umbrellaarea.Service.MapService;
+import com.example.umbrellaarea.umbrellaarea.Service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.Modifying;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.sql.Timestamp;
 import java.util.LinkedList;
@@ -27,6 +27,8 @@ public class MapController {
     UmbrellaRepository umbrellaRepository;
     @Autowired
     UmbrellaAreaRepository umbrellaAreaRepository;
+    @Autowired
+    OrderService orderService;
 
 //    //테스트
 //    @GetMapping("/umbrellacount")
@@ -56,6 +58,10 @@ public class MapController {
         return umbrella;
 
     }
-
+    @GetMapping("ordertest1")
+    @ResponseBody
+    public UmbrellaAreaDTO tes1111(){
+        return orderService.orderinfo(1L);
+    }
 
 }

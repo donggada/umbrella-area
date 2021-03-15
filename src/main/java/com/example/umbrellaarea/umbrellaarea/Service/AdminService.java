@@ -46,9 +46,7 @@ public class AdminService {
     }
 
     // 우산대여존 초기 설정 (수정해야함)
-    @PostMapping("/umbrellafirst")
     public List<Umbrella> sitting(UmbrellaAreaDTO umbrellaAreaDTO){
         return umbrella_add(umbrella_first(umbrellaAreaDTO),umbrellaAreaDTO.getCount());
-
     }
 }

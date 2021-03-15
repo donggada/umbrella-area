@@ -19,13 +19,13 @@ public class MemberController {
     //로그인 화면
     @RequestMapping("/login")
     public String login() {
-        return "login";
+        return "/Member/login";
     }
 
     //회원가입 화면
     @RequestMapping("/join")
     public String join() {
-        return "join";
+        return "/Member/join";
     }
 
     //회원등록
