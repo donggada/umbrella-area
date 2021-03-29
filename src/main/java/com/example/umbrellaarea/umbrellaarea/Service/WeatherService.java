@@ -43,7 +43,7 @@ public class WeatherService {
             Stack<String> T1H = new Stack<String>();
             Stack<String> SKY = new Stack<String>();
             Stack<String> PTY = new Stack<String>();
-            String strurl = http + "serviceKey=" + key + "&pageNo=" + pageNo + "&numOfRows=" + numOfRows + "&dataType=" + dataType + "&base_date=" + day + "&base_time=0630&nx="+nx[index]+"&ny="+ny[index]+"";
+            String strurl = http + "serviceKey=" + key + "&pageNo=" + pageNo + "&numOfRows=" + numOfRows + "&dataType=" + dataType + "&base_date=" + day + "&base_time=0500&nx="+nx[index]+"&ny="+ny[index]+"";
             JSONArray jsonArray = JSONParsing(strurl);
             for (int i = 0; i < jsonArray.size(); i++) {
                 JSONObject date = (JSONObject) jsonArray.get(i);

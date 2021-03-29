@@ -19,7 +19,7 @@ public class Member {
     private String bir_M;
     private String bir_D;
     private String gender;
-
+    private boolean subscribe;
     public Member() {
     }
 
@@ -32,5 +32,6 @@ public class Member {
         this.bir_M = memberDTO.getMember_bir_M();
         this.bir_D = memberDTO.getMember_bir_D();
         this.gender = memberDTO.getMember_gender();
+        this.subscribe=memberDTO.isMember_subscribe();
     }
 }

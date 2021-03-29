@@ -1,6 +1,7 @@
 package com.example.umbrellaarea.umbrellaarea.Service;
 
 import com.example.umbrellaarea.umbrellaarea.Controller.QRCode;
+import com.example.umbrellaarea.umbrellaarea.DTO.MemberDTO;
 import com.example.umbrellaarea.umbrellaarea.DTO.OrderDTO;
 import com.example.umbrellaarea.umbrellaarea.DTO.UmbrellaAreaDTO;
 import com.example.umbrellaarea.umbrellaarea.DTO.UmbrellaDTO;
@@ -32,6 +33,8 @@ public class OrderService {
     MemberRepository memberRepository;
     //주문 작업 수행 (회원아이디값 넣기)
     public Orders order(Long id, HttpSession session) {
+        MemberDTO memberDTO= (MemberDTO) session.getAttribute("member");
+        System.out.println("order = "+memberDTO.toString());
         Queue<Umbrella> queue=new LinkedList<Umbrella>();
         queue.addAll(umbrellaRepository.findByUmbrellaArea_IdAndStateOrderByDate(id,true));
         Long umbrellaid=queue.peek().getId();

@@ -39,8 +39,8 @@ public class MemberController {
     public String loginpost(MemberDTO memberDTO, HttpSession session, Model model){
        Member member=memberService.find(memberDTO);
        if(member!=null){
-           session.setAttribute("member",member);
-           return "redirect:/";
+           session.setAttribute("member",new MemberDTO(member));
+           return "/";
        }else{
            return "/";
        }

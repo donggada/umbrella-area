@@ -25,7 +25,10 @@ public class MainController {
     public String adminmap(){
         return "/Admin/adminmap";
     }
-
-
+    //결제 페이지
+    @RequestMapping("paytest")
+    public String paytest(){
+        return "Pay";
+    }
 
 }
