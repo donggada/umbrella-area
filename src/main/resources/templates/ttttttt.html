@@ -9,14 +9,14 @@
 
 <div class="col-lg-4 col-md-6 text-center">
     <div class="single-pricing-table1">
-    <input type="hidden" name="id" th:value="${umbrella.id}"/>
-        <img th:src="${umbrella.QR}" />
-            <h2 id="num"><p th:text="${umbrella.umbrellaArea.name}"></p></h2>
+    <input type="hidden" name="id" th:value="${myorder.id}"/>
+        <img th:src="${myorder.QR}" />
+            <h2 id="num"><p th:text="${myorder.umbrella.umbrellaArea.name}"></p></h2>
 
         <ul class="package-list">
-            <li ><p th:text="${umbrella.state}"/></li>
-            <li ><p th:text="${umbrella.date}"/></li>
-            <li><p th:text="${umbrella.umbrellaArea.id}"/></li>
+            <li ><p th:text="${myorder.umbrella.state}"/></li>
+            <li ><p th:text="${myorder.umbrella.date}"/></li>
+            <li><p th:text="${myorder.umbrella.umbrellaArea.id}"/></li>
 
         </ul>
 <input type="button" onclick="window.close();" value="닫기">

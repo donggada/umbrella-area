@@ -1,6 +1,5 @@
 package com.example.umbrellaarea.umbrellaarea.Controller;
 
-import com.example.umbrellaarea.umbrellaarea.DTO.Meg;
 import com.example.umbrellaarea.umbrellaarea.DTO.MemberDTO;
 import com.example.umbrellaarea.umbrellaarea.Entity.Member;
 import com.example.umbrellaarea.umbrellaarea.Service.MemberService;
@@ -32,7 +31,7 @@ public class MemberController {
     @PostMapping("join")
     public String joinpost(MemberDTO memberDTO){
         memberService.save(memberDTO);
-        return "login";
+        return "/Member/login";
     }
     //로그인
     @PostMapping("login")
@@ -40,9 +39,9 @@ public class MemberController {
        Member member=memberService.find(memberDTO);
        if(member!=null){
            session.setAttribute("member",new MemberDTO(member));
-           return "/";
+           return "index";
        }else{
-           return "/";
+           return "index";
        }
 
     }

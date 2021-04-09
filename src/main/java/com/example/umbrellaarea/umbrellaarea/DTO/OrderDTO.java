@@ -1,11 +1,9 @@
 package com.example.umbrellaarea.umbrellaarea.DTO;
 
 import com.example.umbrellaarea.umbrellaarea.Entity.Member;
+import com.example.umbrellaarea.umbrellaarea.Entity.Orders;
 import com.example.umbrellaarea.umbrellaarea.Entity.Umbrella;
-import com.example.umbrellaarea.umbrellaarea.Entity.UmbrellaArea;
 import lombok.Data;
-
-import java.sql.Timestamp;
 
 @Data
 public class OrderDTO {
@@ -21,5 +19,12 @@ public class OrderDTO {
     public OrderDTO(Umbrella umbrella, Member member) {
         this.umbrella=umbrella;
         this.member=member;
+    }
+
+    public OrderDTO(Orders orders) {
+        this.id = orders.getId();
+        this.umbrella = orders.getUmbrella();
+        this.QR = orders.getQR();
+        this.member = orders.getMember();
     }
 }

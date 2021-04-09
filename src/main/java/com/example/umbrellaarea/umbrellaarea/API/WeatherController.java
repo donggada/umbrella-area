@@ -17,4 +17,5 @@ public class WeatherController {
     public ArrayList<WeatherDTO> weather(){
         return weatherService.weater();
     }
+
 }
