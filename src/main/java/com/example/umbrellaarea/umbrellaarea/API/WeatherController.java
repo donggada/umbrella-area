@@ -13,6 +13,7 @@ public class WeatherController {
     @Autowired
     WeatherService weatherService;
 
+
     @GetMapping("/weather")
     public ArrayList<WeatherDTO> weather(){
         return weatherService.weater();
