@@ -1,37 +1,34 @@
 package com.example.umbrellaarea.umbrellaarea.Entity;
 
-import com.example.umbrellaarea.umbrellaarea.DTO.MemberDTO;
+import com.example.umbrellaarea.umbrellaarea.DTO.Member.SaveMemberDto;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import javax.persistence.*;
 
 @Entity
 @Getter
-public class Member {
+@ToString
+@NoArgsConstructor
+public class Member extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long num;
+    private Long id;
     @Column(unique = true)
-    private String id;
-    private String name;
-    private String pass;
-    private String bir_Y;
-    private String bir_M;
-    private String bir_D;
+    private String memberId;
+    private String memberPass;
+    private String memberName;
+    private String birthDay;
     private String gender;
-    private boolean subscribe;
-    public Member() {
+
+    public Member(SaveMemberDto saveMemberDto) {
+        this.memberId = saveMemberDto.getMemberId();
+        this.memberPass = saveMemberDto.getMemberPass();
+        this.memberName = saveMemberDto.getMemberName();
+        this.birthDay = saveMemberDto.getBirthDay();
+        this.gender = saveMemberDto.getGender();
     }
 
-    public Member(MemberDTO memberDTO) {
-        this.num = memberDTO.getMember_num();
-        this.id = memberDTO.getMember_id();
-        this.name = memberDTO.getMember_name();
-        this.pass = memberDTO.getMember_pass();
-        this.bir_Y = memberDTO.getMember_bir_Y();
-        this.bir_M = memberDTO.getMember_bir_M();
-        this.bir_D = memberDTO.getMember_bir_D();
-        this.gender = memberDTO.getMember_gender();
-        this.subscribe=memberDTO.isMember_subscribe();
-    }
+
 }

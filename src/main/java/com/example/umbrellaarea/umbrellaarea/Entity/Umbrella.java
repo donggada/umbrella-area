@@ -1,34 +1,40 @@
 package com.example.umbrellaarea.umbrellaarea.Entity;
 
-import com.example.umbrellaarea.umbrellaarea.DTO.UmbrellaDTO;
-import lombok.Data;
+import com.example.umbrellaarea.umbrellaarea.DTO.Umbrella.SaveUmbrellaDto;
+import com.example.umbrellaarea.umbrellaarea.DTO.Umbrella.UseUmbrellaDto;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
-import java.time.LocalDate;
+
+import static javax.persistence.FetchType.LAZY;
 
 
 @Entity
 @Getter
-public class Umbrella {
+@NoArgsConstructor
+public class Umbrella extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @ManyToOne
-    @JoinColumn(name = "umbrella_area_id")
-    private UmbrellaArea umbrellaArea;
-    private boolean state;
-    private Timestamp date;
 
-    public Umbrella(UmbrellaDTO umbrellaDTO) {
-        this.id = umbrellaDTO.getId();
-        this.date = umbrellaDTO.getDate();
-        this.umbrellaArea = umbrellaDTO.getUmbrellaArea();
-        this.state = true;
+    @ManyToOne(fetch = LAZY)
+    private UmbrellaZone umbrellaZone;
+
+    private boolean state;
+
+    public Umbrella(UmbrellaZone umbrellaZone ,boolean state) {
+        this.umbrellaZone = umbrellaZone;
+        this.state = state;
     }
 
-    public Umbrella() {
+    public void useUmbrella (boolean state) {
+        this.state = state;
+    }
 
+    public void returnUmbrella (UmbrellaZone umbrellaZone, boolean state) {
+        this.umbrellaZone = umbrellaZone;
+        this.state = state;
     }
 }
