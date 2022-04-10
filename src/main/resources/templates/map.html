@@ -15,7 +15,7 @@
 <link rel="stylesheet" type="text/css" href="css/map.css" />
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <body>
-<input type="button" value="관리자모드" onclick="location.href='/adminmap';">
+<input type="button" value="관리자모드3" onclick="location.href='/adminmap';">
 <div id="map" style="width:100%;height:350px;">
 <!--    <header>-->
 <!--        <div th:replace="index.html :: fragment-header"></div>-->
@@ -23,7 +23,7 @@
 
 </div>
 
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=5a5acd92c1997ca0692332af110038d2"></script>
+<script type="text/javascript" th:src="${kakaoMapUrl}"></script>
 <script>
 
 
@@ -44,8 +44,8 @@ var positions=[];
     // 마커의 이미지정보를 가지고 있는 마커이미지를 생성합니다
     var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption),
     markerPosition = new kakao.maps.LatLng(37.54699, 127.09598); // 마커가 표시될 위치입니다
-$.getJSON('/area',function(rdate){
-  $.each(rdate,function(index,item){
+$.getJSON('/area',function(rdate) {
+  $.each(rdate,function(index,item) {
     positions.push( {
         title: item.count,
         id:item.id,

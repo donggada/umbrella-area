@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<link rel="stylesheet" type="text/css" href="css/order.css" />
+<body>
+
+<div class="col-lg-4 col-md-6 text-center">
+    <div class="single-pricing-table1">
+<form action="/api/umbrellaZone/setting" method="post">
+x:<input type="text" th:value="${UmbrellaZoneSetting.nx}" readonly="readonly" name="nx">
+y:<input type="text" th:value="${UmbrellaZoneSetting.ny}" readonly="readonly" name="ny"><br>
+대여존 이름<input type="text" name="zoneName"><br>
+    우산갯수<input type="text" name="umbrellaCount">
+<input type="submit" value="우산대여존 만들기">
+</form>
+    </div>
+</div>
+</body>
+</html>

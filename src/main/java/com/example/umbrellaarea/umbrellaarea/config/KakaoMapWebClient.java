@@ -8,8 +8,8 @@ import org.springframework.web.reactive.function.client.WebClient;
 //@Configuration
 public class KakaoMapWebClient {
 
-//    @Value("${kakao.secret.key}")
-//    private String secretKey;
+    @Value("${kakao.map.rest.api.key}")
+    private String secretKey;
 
     @Bean
     public WebClient kakaoMapWebClient() {

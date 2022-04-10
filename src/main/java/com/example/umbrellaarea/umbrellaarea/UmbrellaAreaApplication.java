@@ -3,6 +3,7 @@ package com.example.umbrellaarea.umbrellaarea;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.data.domain.AuditorAware;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 
@@ -11,6 +12,7 @@ import java.util.UUID;
 
 @EnableJpaAuditing
 @SpringBootApplication
+@PropertySource(value = {"classpath:application.properties", "classpath:kakao.properties" })
 public class UmbrellaAreaApplication {
 
 	public static void main(String[] args) {
