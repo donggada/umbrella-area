@@ -1,7 +1,7 @@
 package com.example.umbrellaarea.umbrellaarea.admin.controller;
 
 
-import com.example.umbrellaarea.umbrellaarea.admin.request.UmbrellaZoneSetting;
+import com.example.umbrellaarea.umbrellaarea.admin.dto.UmbrellaZoneSetting;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

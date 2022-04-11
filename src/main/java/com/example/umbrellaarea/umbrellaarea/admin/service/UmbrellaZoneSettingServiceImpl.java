@@ -1,5 +1,5 @@
 package com.example.umbrellaarea.umbrellaarea.admin.service;
-import com.example.umbrellaarea.umbrellaarea.admin.request.UmbrellaZoneSetting;
+import com.example.umbrellaarea.umbrellaarea.admin.dto.UmbrellaZoneSetting;
 import com.example.umbrellaarea.umbrellaarea.umbrellaArea.entity.Umbrella;
 import com.example.umbrellaarea.umbrellaarea.umbrellaArea.entity.UmbrellaZone;
 import com.example.umbrellaarea.umbrellaarea.umbrellaArea.repository.Umbrella.UmbrellaRepository;

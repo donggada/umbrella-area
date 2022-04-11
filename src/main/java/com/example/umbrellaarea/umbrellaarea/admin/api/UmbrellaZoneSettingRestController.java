@@ -1,6 +1,6 @@
 package com.example.umbrellaarea.umbrellaarea.admin.api;
 
-import com.example.umbrellaarea.umbrellaarea.admin.request.UmbrellaZoneSetting;
+import com.example.umbrellaarea.umbrellaarea.admin.dto.UmbrellaZoneSetting;
 import com.example.umbrellaarea.umbrellaarea.admin.service.UmbrellaZoneSettingService;
 import com.example.umbrellaarea.umbrellaarea.umbrellaArea.entity.UmbrellaZone;
 import lombok.RequiredArgsConstructor;

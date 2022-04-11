@@ -1,5 +1,6 @@
-package com.example.umbrellaarea.umbrellaarea.api.weather.response;
+package com.example.umbrellaarea.umbrellaarea.umbrellaArea.api.weather.response;
 
+import lombok.Builder;
 import lombok.Getter;
 import lombok.ToString;
 
@@ -11,9 +12,11 @@ public class Weather {
     private Integer temperatures;
 
 
+    @Builder
     public static Weather createWeather(String local, String weatherType, Integer temperatures) {
         return new Weather(local, weatherType, temperatures);
     }
+
 
     private Weather(String local, String weatherType, Integer temperatures) {
         this.local = local;

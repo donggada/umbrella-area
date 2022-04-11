@@ -1,7 +1,7 @@
-package com.example.umbrellaarea.umbrellaarea.api.weather.service;
+package com.example.umbrellaarea.umbrellaarea.umbrellaArea.api.weather.service;
 
 
-import com.example.umbrellaarea.umbrellaarea.api.weather.response.Weather;
+import com.example.umbrellaarea.umbrellaarea.umbrellaArea.api.weather.response.Weather;
 import com.example.umbrellaarea.umbrellaarea.Enum.WeatherLocal;
 import org.springframework.stereotype.Service;
 
@@ -26,7 +26,6 @@ public class WeatherServiceImpl implements WeatherService {
             weatherList.add(weather);
         }
 
-        System.out.println(weatherList.toString());
         return weatherList;
     }
 

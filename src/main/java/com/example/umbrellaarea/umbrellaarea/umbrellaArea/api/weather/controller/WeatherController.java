@@ -1,7 +1,7 @@
-package com.example.umbrellaarea.umbrellaarea.api.weather.controller;
+package com.example.umbrellaarea.umbrellaarea.umbrellaArea.api.weather.controller;
 
-import com.example.umbrellaarea.umbrellaarea.api.weather.response.Weather;
-import com.example.umbrellaarea.umbrellaarea.api.weather.service.WeatherService;
+import com.example.umbrellaarea.umbrellaarea.umbrellaArea.api.weather.response.Weather;
+import com.example.umbrellaarea.umbrellaarea.umbrellaArea.api.weather.service.WeatherService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;

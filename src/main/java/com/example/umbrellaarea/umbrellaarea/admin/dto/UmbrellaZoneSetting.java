@@ -1,9 +1,8 @@
-package com.example.umbrellaarea.umbrellaarea.admin.request;
+package com.example.umbrellaarea.umbrellaarea.admin.dto;
 
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.validation.Valid;
 
 @Getter
 @Setter
