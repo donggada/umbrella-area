@@ -5,7 +5,10 @@ import com.example.umbrellaarea.umbrellaarea.admin.dto.UmbrellaZoneSetting;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+
+import javax.validation.Valid;
 
 @Controller
 public class AdminViewController {
@@ -21,7 +24,7 @@ public class AdminViewController {
     }
 
     @GetMapping("view/admin/umbrellaAreaInit")
-    public String viewUmbrellaAreaInit (Model model, UmbrellaZoneSetting umbrellaZoneSetting) {
+    public String viewUmbrellaAreaInit (Model model,  UmbrellaZoneSetting umbrellaZoneSetting) {
         model.addAttribute("UmbrellaZoneSetting",umbrellaZoneSetting);
         return "admin/umbrellaAreaInit";
     }

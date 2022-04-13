@@ -24,7 +24,6 @@ public class UmbrellaZoneSettingServiceImpl implements UmbrellaZoneSettingServic
                                                       umbrellaZoneSetting.getNy()));
 
         bulkSaveUmbrella(saveUmbrellaZone, umbrellaZoneSetting.getUmbrellaCount());
-
         return saveUmbrellaZone;
     }
 
