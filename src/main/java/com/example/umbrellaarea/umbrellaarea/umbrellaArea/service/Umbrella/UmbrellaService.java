@@ -1,6 +1,7 @@
 package com.example.umbrellaarea.umbrellaarea.umbrellaArea.service.Umbrella;
 
 import com.example.umbrellaarea.umbrellaarea.umbrellaArea.entity.Umbrella;
+import com.example.umbrellaarea.umbrellaarea.umbrellaArea.entity.UmbrellaZone;
 import com.example.umbrellaarea.umbrellaarea.umbrellaArea.repository.Umbrella.UmbrellaRepository;
 import com.example.umbrellaarea.umbrellaarea.umbrellaArea.repository.UmbrellaZone.UmbrellaZoneRepository;
 import lombok.RequiredArgsConstructor;
@@ -17,8 +18,15 @@ public class UmbrellaService {
 
     @Transactional
     public Umbrella borrowUmbrella(Long umbrellaId) throws Exception {
-        Umbrella umbrella = umbrellaRepository.findById(umbrellaId).orElseThrow(() -> new Exception("값 없음"));
-        umbrella.useUmbrella(false);
+        Umbrella umbrella = umbrellaRepository.findById(umbrellaId).orElseThrow(() -> new Exception("우산 없음"));
+        umbrella.useUmbrella();
         return umbrella;
+    }
+
+    @Transactional
+    public Umbrella returnUmbrella(UmbrellaZone umbrellaZone, Long umbrellaId) throws Exception {
+        Umbrella umbrella = umbrellaRepository.findById(umbrellaId).orElseThrow(() -> new Exception("우산 없음"));
+        umbrella.returnUmbrella(umbrellaZone);
+        return null;
     }
 }

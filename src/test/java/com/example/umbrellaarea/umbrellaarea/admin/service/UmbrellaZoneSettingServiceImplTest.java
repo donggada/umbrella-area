@@ -20,11 +20,12 @@ class UmbrellaZoneSettingServiceImplTest {
      @Test
          public void saveUmbrellaZoneSetting(){
              //given
-         UmbrellaZoneSetting umbrellaZoneSetting = new UmbrellaZoneSetting();
-         umbrellaZoneSetting.setUmbrellaCount(10);
-         umbrellaZoneSetting.setNx(30.2);
-         umbrellaZoneSetting.setNy(149.4);
-         umbrellaZoneSetting.setZoneName("TEST ZONE");
+         UmbrellaZoneSetting umbrellaZoneSetting = UmbrellaZoneSetting.builder()
+                 .umbrellaCount(10)
+                 .nx(30.2)
+                 .ny(149.4)
+                 .zoneName("TEST ZONE")
+                 .build();
          //when
          UmbrellaZoneSettingServiceImpl umbrellaZoneSettingService = new UmbrellaZoneSettingServiceImpl(umbrellaZoneRepository,umbrellaRepository);
          UmbrellaZone umbrellaZone = umbrellaZoneSettingService.saveUmbrellaZone(umbrellaZoneSetting);

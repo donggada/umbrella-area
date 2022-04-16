@@ -26,13 +26,13 @@ public class Umbrella extends BaseEntity {
         this.state = state;
     }
 
-    public void useUmbrella (boolean state) {
-        this.state = state;
+    public void useUmbrella () {
+        this.state = false;
     }
 
-    public void returnUmbrella (UmbrellaZone umbrellaZone, boolean state) {
+    public void returnUmbrella (UmbrellaZone umbrellaZone) {
         this.umbrellaZone = umbrellaZone;
-        this.state = state;
+        this.state = true;
     }
 
     public static Umbrella createUmbrella (UmbrellaZone umbrellaZone) {
