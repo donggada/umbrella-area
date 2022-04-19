@@ -25,7 +25,7 @@ public class UmbrellaZoneQueryRepository {
         QUmbrella umbrella = QUmbrella.umbrella;
         return queryFactory.select(
                 new QMapUmbrellaZoneDto(umbrellaZone.name, umbrellaZone.nx,
-                umbrellaZone.ny, umbrellaZone.adders, umbrella.count()))
+                umbrellaZone.ny, umbrellaZone.adders, umbrella.id.count()))
                 .from(umbrellaZone)
                 .join(umbrella.umbrellaZone, umbrellaZone)
                 .groupBy(umbrellaZone.id)

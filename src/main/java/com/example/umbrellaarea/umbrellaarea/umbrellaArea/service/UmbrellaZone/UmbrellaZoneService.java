@@ -10,7 +10,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class UmbrellaZoneService {
 
-    public List<MapUmbrellaZoneDto> selectUmbrllaZoneAndUmbrellaCount() {
+    public List<MapUmbrellaZoneDto> selectUmbrellaZoneAndUmbrellaCount() {
 
 
         return null;
