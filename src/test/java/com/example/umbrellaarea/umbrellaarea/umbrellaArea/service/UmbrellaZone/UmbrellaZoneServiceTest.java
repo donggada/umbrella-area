@@ -15,6 +15,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.*;
+
 @SpringBootTest
 class UmbrellaZoneServiceTest {
 
@@ -27,8 +29,6 @@ class UmbrellaZoneServiceTest {
     @Autowired
     UmbrellaZoneSettingService umbrellaZoneSettingService;
 
-    @Autowired
-    UmbrellaZoneQueryRepository umbrellaZoneQueryRepository;
 
     @BeforeEach
     void  init () {
@@ -50,13 +50,23 @@ class UmbrellaZoneServiceTest {
      @Test
      @DisplayName("우산 대야존 검색")
          public void selectUmbrellaZone(){
-             //given
+         //given
 
-             //when
-         List<MapUmbrellaZoneDto> mapUmbrellaZoneDtos = umbrellaZoneQueryRepository.selectUmbrellaZone();
-         System.out.println(mapUmbrellaZoneDtos);
+         //when
+         List<MapUmbrellaZoneDto> listMapUmbrellaZone = umbrellaZoneService.selectUmbrellaZoneAndUmbrellaCount();
 
          //then
-//         Assertions.assertThat(mapUmbrellaZoneDto.size()).isEqualTo(2);
+         assertThat(listMapUmbrellaZone.size()).isEqualTo(2);
+
+         for(MapUmbrellaZoneDto umbrellaZoneDto:listMapUmbrellaZone) {
+             String name = umbrellaZoneDto.getName();
+
+             if (name.equals("TEST1")) {
+                 assertThat(umbrellaZoneDto.getCount()).isEqualTo(10);
+             } else if (name.equals("TEST2")) {
+                 assertThat(umbrellaZoneDto.getCount()).isEqualTo(5);
+             }
          }
+
+     }
 }

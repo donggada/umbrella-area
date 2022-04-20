@@ -11,7 +11,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
-;
+;import static com.example.umbrellaarea.umbrellaarea.umbrellaArea.entity.QUmbrella.umbrella;
+import static com.example.umbrellaarea.umbrellaarea.umbrellaArea.entity.QUmbrellaZone.umbrellaZone;
 
 @Repository
 @RequiredArgsConstructor
@@ -21,12 +22,10 @@ public class UmbrellaZoneQueryRepository {
 
 
     public List<MapUmbrellaZoneDto> selectUmbrellaZone () {
-        QUmbrellaZone umbrellaZone = QUmbrellaZone.umbrellaZone;
-        QUmbrella umbrella = QUmbrella.umbrella;
         return queryFactory.select(
                 new QMapUmbrellaZoneDto(umbrellaZone.name, umbrellaZone.nx,
-                umbrellaZone.ny, umbrellaZone.adders, umbrella.id.count()))
-                .from(umbrellaZone)
+                umbrellaZone.ny, umbrellaZone.adders, umbrella.count()))
+                .from(umbrella)
                 .join(umbrella.umbrellaZone, umbrellaZone)
                 .groupBy(umbrellaZone.id)
                 .fetch();
