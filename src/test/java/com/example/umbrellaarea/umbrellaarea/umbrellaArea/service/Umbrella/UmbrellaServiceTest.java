@@ -13,6 +13,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import static org.assertj.core.api.Assertions.*;
+
 @SpringBootTest
 public class UmbrellaServiceTest {
 
@@ -48,7 +50,7 @@ public class UmbrellaServiceTest {
 
     @Test
     @DisplayName("우산 대여")
-    public void borrowUmbrella () throws Exception {
+    public void borrowUmbrella () {
         //given
         Long umbrellaId = 2L;
         //when
@@ -56,22 +58,22 @@ public class UmbrellaServiceTest {
         Umbrella findUmbrella = umbrellaRepository.findById(umbrellaId)
                 .orElseThrow(() -> new IllegalArgumentException("우산 데이터 없음!!"));
         //then
-        Assertions.assertThat(umbrella).isNotNull();
-        Assertions.assertThat(findUmbrella.isState()).isFalse();
-        Assertions.assertThat(umbrella.getId()).isEqualTo(findUmbrella.getId());
+        assertThat(umbrella).isNotNull();
+        assertThat(findUmbrella.isState()).isFalse();
+        assertThat(umbrella.getId()).isEqualTo(findUmbrella.getId());
     }
 
     @Test
     @DisplayName("우산 반납")
-    public void returnUmbrella() throws Exception {
+    public void returnUmbrella() {
     //given
         Long umbrellaId = 2L;
-        UmbrellaZone returnZone = UmbrellaZone.createUmbrellaZone("returnZone", 12, 35);
         Umbrella borrowUmbrella = umbrellaService.borrowUmbrella(umbrellaId);
         //when
-        Umbrella returnUmbrella = umbrellaService.returnUmbrella(returnZone, umbrellaId);
+        Umbrella returnUmbrella = umbrellaService.returnUmbrella(7L, umbrellaId);
         //then
-        Assertions.assertThat(returnUmbrella).isNotNull();
-        Assertions.assertThat(returnUmbrella.isState()).isTrue();
+        assertThat(returnUmbrella).isNotNull();
+        assertThat(returnUmbrella.isState()).isTrue();
+
     }
 }

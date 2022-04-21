@@ -8,6 +8,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Optional;
+
 @Service
 @RequiredArgsConstructor
 public class UmbrellaService {
@@ -17,16 +19,17 @@ public class UmbrellaService {
     private final UmbrellaZoneRepository umbrellaZoneRepository;
 
     @Transactional
-    public Umbrella borrowUmbrella(Long umbrellaId) throws Exception {
-        Umbrella umbrella = umbrellaRepository.findById(umbrellaId).orElseThrow(() -> new Exception("우산 없음"));
+    public Umbrella borrowUmbrella(Long umbrellaId) {
+        Umbrella umbrella = umbrellaRepository.findById(umbrellaId).orElseThrow(() -> new IllegalArgumentException("우산 없음"));
         umbrella.useUmbrella();
         return umbrella;
     }
 
     @Transactional
-    public Umbrella returnUmbrella(UmbrellaZone umbrellaZone, Long umbrellaId) throws Exception {
-        Umbrella umbrella = umbrellaRepository.findById(umbrellaId).orElseThrow(() -> new Exception("우산 없음"));
+    public Umbrella returnUmbrella(Long umbrellaZoneId, Long umbrellaId) {
+        Umbrella umbrella = umbrellaRepository.findById(umbrellaId).orElseThrow(() -> new IllegalArgumentException("우산 없음"));
+        UmbrellaZone umbrellaZone = umbrellaZoneRepository.findById(umbrellaZoneId).orElseThrow(() -> new IllegalArgumentException("우산 대여존 없음"));
         umbrella.returnUmbrella(umbrellaZone);
-        return null;
+        return umbrella;
     }
 }
