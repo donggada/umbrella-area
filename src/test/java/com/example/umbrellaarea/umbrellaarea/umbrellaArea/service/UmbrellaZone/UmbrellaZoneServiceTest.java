@@ -1,12 +1,9 @@
 package com.example.umbrellaarea.umbrellaarea.umbrellaArea.service.UmbrellaZone;
 
-import com.example.umbrellaarea.umbrellaarea.admin.dto.UmbrellaZoneSetting;
-import com.example.umbrellaarea.umbrellaarea.admin.service.UmbrellaZoneSettingService;
+import com.example.umbrellaarea.umbrellaarea.admin.dto.SaveUmbrellaZone;
+import com.example.umbrellaarea.umbrellaarea.admin.service.AdminUmbrellaZoneService;
 import com.example.umbrellaarea.umbrellaarea.umbrellaArea.dto.UmbrellaZone.MapUmbrellaZoneDto;
-import com.example.umbrellaarea.umbrellaarea.umbrellaArea.entity.UmbrellaZone;
-import com.example.umbrellaarea.umbrellaarea.umbrellaArea.repository.UmbrellaZone.UmbrellaZoneQueryRepository;
 import com.example.umbrellaarea.umbrellaarea.umbrellaArea.repository.UmbrellaZone.UmbrellaZoneRepository;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -21,25 +18,25 @@ import static org.assertj.core.api.Assertions.*;
 class UmbrellaZoneServiceTest {
 
     @Autowired
-    UmbrellaZoneService umbrellaZoneService;
+    com.example.umbrellaarea.umbrellaarea.umbrellaArea.service.UmbrellaZone.UmbrellaZoneService umbrellaZoneService;
 
     @Autowired
     UmbrellaZoneRepository umbrellaZoneRepository;
 
     @Autowired
-    UmbrellaZoneSettingService umbrellaZoneSettingService;
+    AdminUmbrellaZoneService umbrellaZoneSettingService;
 
 
     @BeforeEach
     void  init () {
-        UmbrellaZoneSetting umbrellaZoneSetting = UmbrellaZoneSetting.builder()
+        SaveUmbrellaZone umbrellaZoneSetting = SaveUmbrellaZone.builder()
                 .zoneName("TEST1")
                 .nx(12)
                 .ny(2)
                 .umbrellaCount(10).build();
         umbrellaZoneSettingService.saveUmbrellaZone(umbrellaZoneSetting);
 
-        UmbrellaZoneSetting umbrellaZoneSetting1 = UmbrellaZoneSetting.builder()
+        SaveUmbrellaZone umbrellaZoneSetting1 = SaveUmbrellaZone.builder()
                 .zoneName("TEST2")
                 .nx(12)
                 .ny(2)

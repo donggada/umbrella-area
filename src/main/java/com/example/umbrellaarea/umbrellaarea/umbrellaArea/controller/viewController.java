@@ -26,9 +26,4 @@ public class viewController {
         return "map";
     }
 
-    @ResponseBody
-    @GetMapping("/zone")
-    public List<MapUmbrellaZoneDto> mapUmbrellaZone() {
-        return umbrellaZoneService.selectUmbrellaZoneAndUmbrellaCount();
-    }
 }

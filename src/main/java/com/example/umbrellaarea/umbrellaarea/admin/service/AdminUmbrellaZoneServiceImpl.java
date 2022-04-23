@@ -1,5 +1,5 @@
 package com.example.umbrellaarea.umbrellaarea.admin.service;
-import com.example.umbrellaarea.umbrellaarea.admin.dto.UmbrellaZoneSetting;
+import com.example.umbrellaarea.umbrellaarea.admin.dto.SaveUmbrellaZone;
 import com.example.umbrellaarea.umbrellaarea.umbrellaArea.entity.Umbrella;
 import com.example.umbrellaarea.umbrellaarea.umbrellaArea.entity.UmbrellaZone;
 import com.example.umbrellaarea.umbrellaarea.umbrellaArea.repository.Umbrella.UmbrellaRepository;
@@ -9,22 +9,25 @@ import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-public class UmbrellaZoneSettingServiceImpl implements UmbrellaZoneSettingService {
+public class AdminUmbrellaZoneServiceImpl implements AdminUmbrellaZoneService {
 
     private final UmbrellaZoneRepository umbrellaZoneRepository;
 
     private final UmbrellaRepository umbrellaRepository;
 
     @Override
-    public UmbrellaZone saveUmbrellaZone(UmbrellaZoneSetting umbrellaZoneSetting) {
+    public Long saveUmbrellaZone(SaveUmbrellaZone saveUmbrellaZone1) {
 
-        UmbrellaZone saveUmbrellaZone = umbrellaZoneRepository
-                .save(UmbrellaZone.createUmbrellaZone(umbrellaZoneSetting.getZoneName(),
-                                                      umbrellaZoneSetting.getNx(),
-                                                      umbrellaZoneSetting.getNy()));
+        UmbrellaZone saveUmbrellaZone = umbrellaZoneRepository.save(
+                UmbrellaZone.createUmbrellaZone(
+                        saveUmbrellaZone1.getZoneName(),
+                        saveUmbrellaZone1.getNx(),
+                        saveUmbrellaZone1.getNy()
+                )
+        );
 
-        bulkSaveUmbrella(saveUmbrellaZone, umbrellaZoneSetting.getUmbrellaCount());
-        return saveUmbrellaZone;
+        bulkSaveUmbrella(saveUmbrellaZone, saveUmbrellaZone1.getUmbrellaCount());
+        return saveUmbrellaZone.getId();
     }
 
     private void bulkSaveUmbrella(UmbrellaZone umbrellaZone, int saveCount) {

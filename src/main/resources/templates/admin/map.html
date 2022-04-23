@@ -44,11 +44,10 @@ const map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합�
 let markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption),
     markerPosition = new kakao.maps.LatLng(37.54699, 127.09598); // 마커가 표시될 위치입니다
 
-let positions=[];
+let positionList=[];
 
-    $.getJSON('/area',function(data){
-        const {positionList} = data
-        positions = positionList;
+    $.getJSON('/api/v1/zone',function(data){
+        positionList = data;
     })
 
 //검색위치로 지도 이동
@@ -59,6 +58,7 @@ function placesSearchCB (data, status, pagination) {
         // LatLngBounds 객체에 좌표를 추가합니다
         let bounds = new kakao.maps.LatLngBounds();
         displayMarker();
+
         for (let i=0; i<data.length; i++) {
             bounds.extend(new kakao.maps.LatLng(data[i].y, data[i].x));
         }
@@ -74,12 +74,12 @@ kakao.maps.event.addListener(map, 'click', function(mouseEvent) {
 
     // 클릭한 위도, 경도 정보를 가져옵니다
     let latlng = mouseEvent.latLng;
-    window.open('umbrellaAreaInit?nx='+latlng.getLat()+'&&ny='+latlng.getLng());
+    window.open('umbrellaZone?nx='+latlng.getLat()+'&&ny='+latlng.getLng());
 
 });
 
 // 주문 페이지
-function orderopen(orderpage){
+function openOrder(orderpage){
      const _width = '650';
      const _height = '380';
 
@@ -92,25 +92,25 @@ function orderopen(orderpage){
 }
 
 function displayMarker() {
-    for (let i = 0; i < positions.length; i ++) {
+    for (let i = 0; i < positionList.length; i ++) {
        // 마커를 생성합니다
         let marker = new kakao.maps.Marker({
             map: map,
-            position: new kakao.maps.LatLng(positions[i].nx, positions[i].ny),
+            position: new kakao.maps.LatLng(positionList[i].nx, positionList[i].ny),
              image:  new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption)
         });
 
         let content = '<div class="customoverlay">' +
-        '  <a onclick="orderopen('+"'order/"+positions[i].id+"'"+')" target="_blank">' +
-        '    <span class="title">'+positions[i].count+'</span>' +
-        '  </a>' +
-        '</div>';
+                      '  <a onclick="openOrder('+"'order/"+positionList[i].id+"'"+')" target="_blank">' +
+                      '    <span class="title">'+positionList[i].count+'</span>' +
+                      '  </a>' +
+                      '</div>';
 
 
         // 커스텀 오버레이를 생성합니다
         let customOverlay = new kakao.maps.CustomOverlay({
             map: map,
-            position: new kakao.maps.LatLng(positions[i].nx, positions[i].ny),
+            position: new kakao.maps.LatLng(positionList[i].nx, positionList[i].ny),
             content: content,
             yAnchor: 0.2
         });

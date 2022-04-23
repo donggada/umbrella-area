@@ -31,10 +31,4 @@ public class UmbrellaZoneQueryRepository {
                 .fetch();
     }
 
-    public List<UmbrellaZone> test () {
-        QUmbrellaZone umbrellaZone = QUmbrellaZone.umbrellaZone;
-        List<UmbrellaZone> fetch = queryFactory.selectFrom(umbrellaZone).fetch();
-        return fetch;
-    }
-
 }

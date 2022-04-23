@@ -1,7 +1,6 @@
 package com.example.umbrellaarea.umbrellaarea.admin.service;
 
-import com.example.umbrellaarea.umbrellaarea.admin.dto.UmbrellaZoneSetting;
-import com.example.umbrellaarea.umbrellaarea.umbrellaArea.entity.UmbrellaZone;
+import com.example.umbrellaarea.umbrellaarea.admin.dto.SaveUmbrellaZone;
 import com.example.umbrellaarea.umbrellaarea.umbrellaArea.repository.Umbrella.UmbrellaRepository;
 import com.example.umbrellaarea.umbrellaarea.umbrellaArea.repository.UmbrellaZone.UmbrellaZoneRepository;
 import org.assertj.core.api.Assertions;
@@ -20,18 +19,18 @@ class UmbrellaZoneSettingServiceImplTest {
      @Test
          public void saveUmbrellaZoneSetting(){
              //given
-         UmbrellaZoneSetting umbrellaZoneSetting = UmbrellaZoneSetting.builder()
+         SaveUmbrellaZone umbrellaZoneSetting = SaveUmbrellaZone.builder()
                  .umbrellaCount(10)
                  .nx(30.2)
                  .ny(149.4)
                  .zoneName("TEST ZONE")
                  .build();
          //when
-         UmbrellaZoneSettingServiceImpl umbrellaZoneSettingService = new UmbrellaZoneSettingServiceImpl(umbrellaZoneRepository,umbrellaRepository);
-         UmbrellaZone umbrellaZone = umbrellaZoneSettingService.saveUmbrellaZone(umbrellaZoneSetting);
+         AdminUmbrellaZoneServiceImpl umbrellaZoneSettingService = new AdminUmbrellaZoneServiceImpl(umbrellaZoneRepository,umbrellaRepository);
+         Long umbrellaZoneId = umbrellaZoneSettingService.saveUmbrellaZone(umbrellaZoneSetting);
 
          //then
-         Assertions.assertThat(umbrellaZone).isNotNull();
+         Assertions.assertThat(umbrellaZoneId).isNotNull();
 
          }
 

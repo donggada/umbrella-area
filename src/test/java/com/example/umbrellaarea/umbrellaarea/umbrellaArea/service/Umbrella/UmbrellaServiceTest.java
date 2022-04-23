@@ -1,12 +1,10 @@
 package com.example.umbrellaarea.umbrellaarea.umbrellaArea.service.Umbrella;
 
-import com.example.umbrellaarea.umbrellaarea.admin.dto.UmbrellaZoneSetting;
-import com.example.umbrellaarea.umbrellaarea.admin.service.UmbrellaZoneSettingService;
+import com.example.umbrellaarea.umbrellaarea.admin.dto.SaveUmbrellaZone;
+import com.example.umbrellaarea.umbrellaarea.admin.service.AdminUmbrellaZoneService;
 import com.example.umbrellaarea.umbrellaarea.umbrellaArea.entity.Umbrella;
-import com.example.umbrellaarea.umbrellaarea.umbrellaArea.entity.UmbrellaZone;
 import com.example.umbrellaarea.umbrellaarea.umbrellaArea.repository.Umbrella.UmbrellaRepository;
 import com.example.umbrellaarea.umbrellaarea.umbrellaArea.repository.UmbrellaZone.UmbrellaZoneRepository;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -28,18 +26,18 @@ public class UmbrellaServiceTest {
     UmbrellaService umbrellaService;
 
     @Autowired
-    UmbrellaZoneSettingService umbrellaZoneSettingService;
+    AdminUmbrellaZoneService umbrellaZoneSettingService;
 
     @BeforeEach
     void  savaUmbrella () {
-        UmbrellaZoneSetting umbrellaZoneSetting = UmbrellaZoneSetting.builder()
+        SaveUmbrellaZone umbrellaZoneSetting = SaveUmbrellaZone.builder()
                 .zoneName("TEST1")
                 .nx(12)
                 .ny(2)
                 .umbrellaCount(5).build();
         umbrellaZoneSettingService.saveUmbrellaZone(umbrellaZoneSetting);
 
-        UmbrellaZoneSetting umbrellaZoneSetting1 = UmbrellaZoneSetting.builder()
+        SaveUmbrellaZone umbrellaZoneSetting1 = SaveUmbrellaZone.builder()
                 .zoneName("TEST2")
                 .nx(12)
                 .ny(2)
