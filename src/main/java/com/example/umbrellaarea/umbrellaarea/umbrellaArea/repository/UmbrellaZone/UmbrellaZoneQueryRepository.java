@@ -27,7 +27,7 @@ public class UmbrellaZoneQueryRepository {
                 umbrellaZone.ny, umbrellaZone.adders, umbrella.count()))
                 .from(umbrella)
                 .join(umbrella.umbrellaZone, umbrellaZone)
-                .where(umbrella.state.eq(false))
+                .where(umbrella.state.eq(true))
                 .groupBy(umbrellaZone.id)
                 .fetch();
     }
@@ -38,7 +38,7 @@ public class UmbrellaZoneQueryRepository {
                         umbrellaZone.ny, umbrellaZone.adders, umbrella.count()))
                 .from(umbrella)
                 .join(umbrella.umbrellaZone, umbrellaZone)
-                .where(umbrellaZone.id.eq(umbrellaZoneId), umbrella.state.eq(false))
+                .where(umbrellaZone.id.eq(umbrellaZoneId), umbrella.state.eq(true))
                 .groupBy(umbrellaZone.id)
                 .fetchOne();
     }

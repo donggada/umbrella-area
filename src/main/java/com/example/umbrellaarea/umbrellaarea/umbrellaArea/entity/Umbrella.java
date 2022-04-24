@@ -41,6 +41,6 @@ public class Umbrella extends BaseEntity {
 
     private Umbrella(UmbrellaZone umbrellaZone) {
         this.umbrellaZone = umbrellaZone;
-        this.state = false;
+        this.state = true;
     }
 }

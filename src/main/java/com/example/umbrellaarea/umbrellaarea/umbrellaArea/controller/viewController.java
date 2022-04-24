@@ -43,13 +43,13 @@ public class viewController {
     @GetMapping("/view/umbrellaZone/{id}")
     public String viewUmbrellaZone (Model model, @PathVariable("id") Long id) {
         MapUmbrellaZoneDto umbrellaZoneDto = umbrellaZoneService.selectDetailUmbrellaZone(id);
-        List<Umbrella> umbrellaList = umbrellaRepository.findByUmbrellaZoneIdAndState(id, false);
+        List<Umbrella> umbrellaList = umbrellaRepository.findByUmbrellaZoneIdAndState(id, true);
         model.addAttribute("umbrellaZoneDto", umbrellaZoneDto);
         model.addAttribute("umbrellaList", umbrellaList);
         return "Order/order";
     }
 
-    @PostMapping("/view/borrowUmbrella/{id}")
+    @GetMapping("/view/borrowUmbrella/{id}")
     public String viewBorrowUmbrella (Model model, @PathVariable("id") Long id) {
         Umbrella umbrella = umbrellaService.borrowUmbrella(id);
         model.addAttribute("umbrella", umbrella);
