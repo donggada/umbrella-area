@@ -23,12 +23,23 @@ public class UmbrellaZoneQueryRepository {
 
     public List<MapUmbrellaZoneDto> selectUmbrellaZone () {
         return queryFactory.select(
-                new QMapUmbrellaZoneDto(umbrellaZone.name, umbrellaZone.nx,
+                new QMapUmbrellaZoneDto(umbrellaZone.id, umbrellaZone.name, umbrellaZone.nx,
                 umbrellaZone.ny, umbrellaZone.adders, umbrella.count()))
                 .from(umbrella)
                 .join(umbrella.umbrellaZone, umbrellaZone)
+                .where(umbrella.state.eq(false))
                 .groupBy(umbrellaZone.id)
                 .fetch();
     }
 
+    public MapUmbrellaZoneDto selectDetailUmbrellaZone(Long umbrellaZoneId) {
+        return queryFactory.select(
+                new QMapUmbrellaZoneDto(umbrellaZone.id, umbrellaZone.name, umbrellaZone.nx,
+                        umbrellaZone.ny, umbrellaZone.adders, umbrella.count()))
+                .from(umbrella)
+                .join(umbrella.umbrellaZone, umbrellaZone)
+                .where(umbrellaZone.id.eq(umbrellaZoneId), umbrella.state.eq(false))
+                .groupBy(umbrellaZone.id)
+                .fetchOne();
+    }
 }

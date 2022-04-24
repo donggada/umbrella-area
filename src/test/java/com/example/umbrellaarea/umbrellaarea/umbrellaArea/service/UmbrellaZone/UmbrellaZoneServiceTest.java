@@ -31,15 +31,15 @@ class UmbrellaZoneServiceTest {
     void  init () {
         SaveUmbrellaZone umbrellaZoneSetting = SaveUmbrellaZone.builder()
                 .zoneName("TEST1")
-                .nx(12)
-                .ny(2)
+                .nx(13.0)
+                .ny(3.0)
                 .umbrellaCount(10).build();
         umbrellaZoneSettingService.saveUmbrellaZone(umbrellaZoneSetting);
 
         SaveUmbrellaZone umbrellaZoneSetting1 = SaveUmbrellaZone.builder()
                 .zoneName("TEST2")
-                .nx(12)
-                .ny(2)
+                .nx(12.0)
+                .ny(2.0)
                 .umbrellaCount(5).build();
         umbrellaZoneSettingService.saveUmbrellaZone(umbrellaZoneSetting1);
     }
@@ -66,4 +66,19 @@ class UmbrellaZoneServiceTest {
          }
 
      }
+
+      @Test
+      @DisplayName("우산대야존 상세정보")
+          public void selectDetailUmbrellaZone(){
+            // given
+
+            //when
+            MapUmbrellaZoneDto mapUmbrellaZone = umbrellaZoneService.selectDetailUmbrellaZone(1L);
+
+            //then
+            assertThat(mapUmbrellaZone.getName()).isEqualTo("TEST1");
+            assertThat(mapUmbrellaZone.getCount()).isEqualTo(10);
+            assertThat(mapUmbrellaZone.getNx()).isEqualTo(13.0);
+            assertThat(mapUmbrellaZone.getNy()).isEqualTo(3.0);
+          }
 }

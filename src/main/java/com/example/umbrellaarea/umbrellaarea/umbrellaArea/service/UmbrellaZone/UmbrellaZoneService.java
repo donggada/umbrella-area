@@ -16,4 +16,9 @@ public class UmbrellaZoneService {
     public List<MapUmbrellaZoneDto> selectUmbrellaZoneAndUmbrellaCount() {
        return umbrellaZoneQueryRepository.selectUmbrellaZone();
     }
+
+    public MapUmbrellaZoneDto selectDetailUmbrellaZone(Long umbrellaZoneId) {
+        return umbrellaZoneQueryRepository.selectDetailUmbrellaZone(umbrellaZoneId);
+    }
+
 }

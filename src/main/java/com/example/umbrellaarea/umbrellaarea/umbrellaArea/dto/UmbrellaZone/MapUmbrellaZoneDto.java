@@ -10,6 +10,8 @@ import lombok.ToString;
 @ToString
 public class MapUmbrellaZoneDto {
 
+    private Long id;
+
     private String name;
 
     private double nx;
@@ -21,7 +23,8 @@ public class MapUmbrellaZoneDto {
     private Long count;
 
     @QueryProjection
-    public MapUmbrellaZoneDto(String name, double nx, double ny, String adders, Long count) {
+    public MapUmbrellaZoneDto(Long id ,String name, double nx, double ny, String adders, Long count) {
+        this.id = id;
         this.name = name;
         this.nx = nx;
         this.ny = ny;
