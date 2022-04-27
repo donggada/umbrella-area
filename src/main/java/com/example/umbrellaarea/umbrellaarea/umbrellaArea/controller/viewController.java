@@ -56,4 +56,11 @@ public class viewController {
         return "Order/resultBorrowUmbrella";
     }
 
+    @GetMapping("/view/returnUmbrella/{id}}")
+    public String viewReturnUmbrella (Model model, @PathVariable("id") Long id) {
+        Umbrella umbrella = umbrellaService.returnUmbrella(id, id);
+        model.addAttribute("umbrella", umbrella);
+        return "Order/resultBorrowUmbrella";
+    }
+
 }
